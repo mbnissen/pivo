@@ -58,6 +58,7 @@ config :pivo, PivoWeb.Endpoint,
     patterns: [
       ~r"priv/static/(?!uploads/).*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
+      ~r"assets/.*(css|js)$",
       ~r"lib/pivo_web/(controllers|live|components)/.*(ex|heex)$"
     ]
   ]

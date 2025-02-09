@@ -35,15 +35,10 @@ const MapHook = {
     });
 
     for (const location of locations) {
-      // create a HTML element for each feature
       const el = document.createElement('div');
-      el.className = 'marker';
-      el.style.background = `linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0)), url('images/${location.logo}')`;
-      el.style.width = '50px';
-      el.style.height = '50px';
-      el.style.borderRadius = '50%';
-      el.style.backgroundSize = 'cover';
-      el.style.backgroundPosition = 'center';
+      el.className = `bg-cover rounded-full w-8 h-8 border-2`;
+      el.style.backgroundImage = `url(/images/${location.logo})`;
+      el.classList.add(`${location.vino ? 'border-green-500' : 'border-red-500'}`);
 
       const html = `<div>
         <h1 class="font-semibold">${location.name}</h1>

@@ -19,7 +19,7 @@ defmodule PivoWeb.MapLive do
   @impl true
   def mount(_params, _session, socket) do
     rallys = %{
-      name: "Rally's",
+      name: "Rallys",
       logo: "rallys_logo.png",
       description: "Best place in Copenhagen. Best beers and Czech pilsner on side pull tap.",
       website: "https://www.rallys.dk",

@@ -12,16 +12,10 @@ const MapHook = {
       center: [12.547187368954477, 55.66598654676102] // [lng, lat]
     });
 
-
     for (const location of locations) {
-
-      const html = `
-        <div class="text-zinc-700">
-          <h1 class="text-lg font-semibold">${location.name}</h1>
-          <p class="text-lg">${'⭐'.repeat(location.rating)}</p>
-          <p>${location.description}</p>
-        </div>
-      `;
+      const html = `<div>
+        <h1 class="text-lg font-semibold">${location.name}</h1>
+      </div>`;
 
       // Create a new marker.
       const marker = new mapboxgl.Marker()

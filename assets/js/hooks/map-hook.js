@@ -53,7 +53,7 @@ const MapHook = {
           <img src="/images/${location.vino ? 'beer.png' : 'no_beer.png'}" class="w-4 h-4 object-cover" />
           <p>${location.style}</p>
         </div>
-        <div class="flex text-zinc-600 text-xs pt-2">
+        <div class="flex text-zinc-500 text-xs pt-2">
           Latest update: ${location.latest_update ? formattedDateTime : 'No updates'}
         </div>
       </div>`;
@@ -64,7 +64,7 @@ const MapHook = {
         .setPopup(new mapboxgl.Popup({offset: 25}).setHTML(html))
         .addTo(map);
 
-      marker.togglePopup(); // toggle popup open or closed
+      //marker.togglePopup(); // toggle popup open or closed
     }
   },
 };

@@ -24,7 +24,8 @@ defmodule PivoWeb.MapLive do
       website: "https://www.kihoskh.dk",
       lat: 55.66644759532798,
       lng: 12.55304832864403,
-      vino: true
+      vino: true,
+      style: "Can"
     }
 
     rallys = %{
@@ -34,7 +35,8 @@ defmodule PivoWeb.MapLive do
       website: "https://www.rallys.dk",
       lat: 55.64846734279557,
       lng: 12.532315540117958,
-      vino: true
+      vino: true,
+      style: "Can"
     }
 
     peders = %{
@@ -43,7 +45,8 @@ defmodule PivoWeb.MapLive do
       description: "Best place in Copenhagen. Best beers and Czech pilsner on side pull tap.",
       lat: 55.6792037555745,
       lng: 12.569022168955275,
-      vino: true
+      vino: true,
+      style: "Side pull"
     }
 
     taphouse = %{
@@ -53,7 +56,8 @@ defmodule PivoWeb.MapLive do
         "The biggest selection of beers in Denmark. 61 taps and 200+ bottles. 5 stars when Jacob is there",
       lat: 55.67623174183128,
       lng: 12.571488122353864,
-      vino: true
+      vino: true,
+      style: "Side pull"
     }
 
     mikkeller_bottle_shop = %{
@@ -62,7 +66,8 @@ defmodule PivoWeb.MapLive do
       description: "The best bottle shop in Copenhagen. 1000+ beers",
       lat: 55.683796786548264,
       lng: 12.569227882377323,
-      vino: false
+      vino: false,
+      style: "Can"
     }
 
     locations = [peders, taphouse, rallys, mikkeller_bottle_shop, kihoskh]

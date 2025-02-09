@@ -41,7 +41,11 @@ const MapHook = {
       el.classList.add(`${location.vino ? 'border-green-500' : 'border-red-500'}`);
 
       const html = `<div>
-        <h1 class="font-semibold">${location.name}</h1>
+        <h1 class="font-semibold pb-1">${location.name}</h1>
+        <div class="flex items-center gap-x-1">
+          <img src="/images/${location.vino ? 'beer.png' : 'no_beer.png'}" class="w-4 h-4 object-cover" />
+          <p>${location.style}</p>
+        </div>
       </div>`;
 
       // Create a new marker.
@@ -50,7 +54,7 @@ const MapHook = {
         .setPopup(new mapboxgl.Popup({offset: 25}).setHTML(html))
         .addTo(map);
 
-      //marker.togglePopup(); // toggle popup open or closed
+      // marker.togglePopup(); // toggle popup open or closed
     }
   },
 };

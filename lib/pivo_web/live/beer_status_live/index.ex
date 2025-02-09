@@ -62,11 +62,14 @@ defmodule PivoWeb.BeerStatusLive.Index do
             </span>
           </div>
         </:col>
-        <:col :let={{_id, beer_status}} label="Is available">
+        <:col :let={{_id, beer_status}} label="Available?">
           <img :if={beer_status.is_available} src="/images/beer.png" class="w-6 h-6" />
           <img :if={!beer_status.is_available} src="/images/no_beer.png" class="w-6 h-6" />
         </:col>
-        <:col :let={{_id, beer_status}} label="Username">{beer_status.username}</:col>
+        <:col :let={{_id, beer_status}} label="By">{beer_status.username}</:col>
+        <:col :let={{_id, beer_status}} label="When">
+          {Calendar.strftime(beer_status.inserted_at, "%H:%M:%S - %d/%m - %Y")}
+        </:col>
       </.table>
 
       <.modal

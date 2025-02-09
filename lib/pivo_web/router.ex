@@ -17,7 +17,7 @@ defmodule PivoWeb.Router do
   scope "/", PivoWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    live "/", MapLive
   end
 
   # Other scopes may use custom stacks.

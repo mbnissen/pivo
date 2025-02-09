@@ -1,16 +1,14 @@
 <header class="px-4 sm:px-6 lg:px-8">
   <div class="flex items-center justify-between border-b border-zinc-100 py-3 text-sm">
-    <div class="flex items-center gap-4">
-      <a href="/">
-        <img src={~p"/images/beer.png"} width="36" />
-      </a>
+    <.link patch={~p"/"} class="flex items-center gap-4">
+      <img src={~p"/images/beer.png"} width="36" />
       <p class="font-semibold">
         Where is Vino?
       </p>
-    </div>
+    </.link>
     <div class="flex items-center gap-4 font-semibold leading-6 text-zinc-900">
       <.link patch={~p"/beer_status/new"}>
-         <span class="pt-3">Beer status</span>
+         <span class="pt-3">New beer status</span>
         <.icon name="hero-plus-circle" class="h-5 w-5 mb-[2.5px]" />
       </.link>
     </div>

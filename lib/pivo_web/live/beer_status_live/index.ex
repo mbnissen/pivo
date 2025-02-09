@@ -6,7 +6,14 @@ defmodule PivoWeb.BeerStatusLive.Index do
 
   @impl true
   def mount(_params, _session, socket) do
-    {:ok, stream(socket, :beer_status_collection, Availibility.list_beer_status())}
+    beer_shops =
+      Availibility.list_beer_shops()
+      |> Enum.reduce(%{}, fn beer_shop, acc -> Map.put(acc, beer_shop.id, beer_shop) end)
+
+    {:ok,
+     socket
+     |> stream(:beer_status_collection, Availibility.list_beer_status())
+     |> assign(:beer_shops, beer_shops)}
   end
 
   @impl true
@@ -44,9 +51,22 @@ defmodule PivoWeb.BeerStatusLive.Index do
     ~H"""
     <div class="px-4">
       <.table id="beer_status" rows={@streams.beer_status_collection}>
+        <:col :let={{_id, beer_status}} label="Beer shop">
+          <div class="flex gap-2">
+            <img
+              src={~p"/images/#{@beer_shops[beer_status.beer_shop_id].logo}"}
+              class="w-8 h-8 rounded-full"
+            />
+            <span class="pt-1">
+              {@beer_shops[beer_status.beer_shop_id].name}
+            </span>
+          </div>
+        </:col>
+        <:col :let={{_id, beer_status}} label="Is available">
+          <img :if={beer_status.is_available} src="/images/beer.png" class="w-6 h-6" />
+          <img :if={!beer_status.is_available} src="/images/no_beer.png" class="w-6 h-6" />
+        </:col>
         <:col :let={{_id, beer_status}} label="Username">{beer_status.username}</:col>
-        <:col :let={{_id, beer_status}} label="Is available">{beer_status.is_available}</:col>
-        <:col :let={{_id, beer_status}} label="Beer shop">{beer_status.beer_shop_id}</:col>
       </.table>
 
       <.modal

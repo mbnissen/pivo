@@ -39,14 +39,6 @@ defmodule PivoWeb.BeerStatusLive.Index do
   end
 
   @impl true
-  def handle_event("delete", %{"id" => id}, socket) do
-    beer_status = Availibility.get_beer_status!(id)
-    {:ok, _} = Availibility.delete_beer_status(beer_status)
-
-    {:noreply, stream_delete(socket, :beer_status_collection, beer_status)}
-  end
-
-  @impl true
   def render(assigns) do
     ~H"""
     <div class="px-4">

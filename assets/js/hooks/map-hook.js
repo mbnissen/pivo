@@ -40,11 +40,21 @@ const MapHook = {
       el.style.backgroundImage = `url(/images/${location.logo})`;
       el.classList.add(`${location.vino ? 'border-green-500' : 'border-red-500'}`);
 
+      const isoDate = location.latest_update; 
+      const date = new Date(isoDate);
+
+      const pad = (num) => num.toString().padStart(2, "0");
+
+      const formattedDateTime = `${pad(date.getHours())}:${pad(date.getMinutes())} ${pad(date.getDate())}/${pad(date.getMonth() + 1)}`;
+
       const html = `<div>
         <h1 class="font-semibold pb-1">${location.name}</h1>
         <div class="flex items-center gap-x-1">
           <img src="/images/${location.vino ? 'beer.png' : 'no_beer.png'}" class="w-4 h-4 object-cover" />
           <p>${location.style}</p>
+        </div>
+        <div class="flex text-zinc-600 text-xs pt-2">
+          Latest update: ${location.latest_update ? formattedDateTime : 'No updates'}
         </div>
       </div>`;
 
@@ -54,7 +64,7 @@ const MapHook = {
         .setPopup(new mapboxgl.Popup({offset: 25}).setHTML(html))
         .addTo(map);
 
-      // marker.togglePopup(); // toggle popup open or closed
+      marker.togglePopup(); // toggle popup open or closed
     }
   },
 };

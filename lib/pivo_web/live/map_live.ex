@@ -20,7 +20,23 @@ defmodule PivoWeb.MapLive do
 
   @impl true
   def mount(_params, _session, socket) do
-    locations = Availibility.list_beer_shops()
+    locations =
+      Availibility.list_beer_shops()
+      |> Enum.map(fn beer_shop ->
+        latest_status =
+          Availibility.get_latest_beer_status_by_shop_id(beer_shop.id)
+
+        %{
+          name: beer_shop.name,
+          lat: beer_shop.lat,
+          lng: beer_shop.lng,
+          style: beer_shop.style,
+          logo: beer_shop.logo,
+          vino: Map.get(latest_status || %{}, :is_available, false),
+          latest_update: Map.get(latest_status || %{}, :inserted_at, nil),
+          latest_update_by: Map.get(latest_status || %{}, :username, nil)
+        }
+      end)
 
     access_token =
       Application.get_env(:pivo, :mapbox)

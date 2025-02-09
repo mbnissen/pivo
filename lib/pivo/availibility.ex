@@ -60,6 +60,15 @@ defmodule Pivo.Availibility do
     ]
   end
 
+  def get_latest_beer_status_by_shop_id(shop_id) do
+    from(bs in BeerStatus,
+      where: bs.beer_shop_id == ^shop_id,
+      order_by: [desc: bs.inserted_at],
+      limit: 1
+    )
+    |> Repo.one()
+  end
+
   @doc """
   Returns the list of beer_status.
 
@@ -72,22 +81,6 @@ defmodule Pivo.Availibility do
   def list_beer_status do
     Repo.all(BeerStatus)
   end
-
-  @doc """
-  Gets a single beer_status.
-
-  Raises `Ecto.NoResultsError` if the Beer status does not exist.
-
-  ## Examples
-
-      iex> get_beer_status!(123)
-      %BeerStatus{}
-
-      iex> get_beer_status!(456)
-      ** (Ecto.NoResultsError)
-
-  """
-  def get_beer_status!(id), do: Repo.get!(BeerStatus, id)
 
   @doc """
   Creates a beer_status.
@@ -105,40 +98,6 @@ defmodule Pivo.Availibility do
     %BeerStatus{}
     |> BeerStatus.changeset(attrs)
     |> Repo.insert()
-  end
-
-  @doc """
-  Updates a beer_status.
-
-  ## Examples
-
-      iex> update_beer_status(beer_status, %{field: new_value})
-      {:ok, %BeerStatus{}}
-
-      iex> update_beer_status(beer_status, %{field: bad_value})
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def update_beer_status(%BeerStatus{} = beer_status, attrs) do
-    beer_status
-    |> BeerStatus.changeset(attrs)
-    |> Repo.update()
-  end
-
-  @doc """
-  Deletes a beer_status.
-
-  ## Examples
-
-      iex> delete_beer_status(beer_status)
-      {:ok, %BeerStatus{}}
-
-      iex> delete_beer_status(beer_status)
-      {:error, %Ecto.Changeset{}}
-
-  """
-  def delete_beer_status(%BeerStatus{} = beer_status) do
-    Repo.delete(beer_status)
   end
 
   @doc """

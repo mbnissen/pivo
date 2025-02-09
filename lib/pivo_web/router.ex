@@ -18,6 +18,8 @@ defmodule PivoWeb.Router do
     pipe_through :browser
 
     live "/", MapLive
+    live "/beer_status", BeerStatusLive.Index, :index
+    live "/beer_status/new", BeerStatusLive.Index, :new
   end
 
   # Other scopes may use custom stacks.

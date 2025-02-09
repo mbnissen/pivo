@@ -38,7 +38,7 @@ defmodule PivoWeb.MapLive do
     locations = [peders, taphouse]
 
     access_token =
-      Application.get_env(:offer, :mapbox)
+      Application.get_env(:pivo, :mapbox)
       |> Keyword.get(:access_token)
 
     {:ok, assign(socket, access_token: access_token, locations: locations)}

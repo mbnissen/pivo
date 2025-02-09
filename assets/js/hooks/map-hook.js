@@ -38,6 +38,7 @@ const MapHook = {
       // create a HTML element for each feature
       const el = document.createElement('div');
       el.className = 'marker';
+      el.style.backgroundImage=`url(images/${location.logo})`; // specify the image path here
 
       const html = `<div>
         <h1 class="text-lg font-semibold">${location.name}</h1>

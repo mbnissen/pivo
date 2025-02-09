@@ -18,6 +18,15 @@ defmodule PivoWeb.MapLive do
 
   @impl true
   def mount(_params, _session, socket) do
+    kihoskh = %{
+      name: "Kihoskh",
+      logo: "kihoskh_logo.avif",
+      website: "https://www.kihoskh.dk",
+      lat: 55.66644759532798,
+      lng: 12.55304832864403,
+      vino: true
+    }
+
     rallys = %{
       name: "Rallys",
       logo: "rallys_logo.png",
@@ -48,7 +57,7 @@ defmodule PivoWeb.MapLive do
     }
 
     mikkeller_bottle_shop = %{
-      name: "Mikkeller Bottle Shop",
+      name: "Mikkeller & Friends Bottle Shop",
       logo: "mikkeller_bottle_shop_logo.png",
       description: "The best bottle shop in Copenhagen. 1000+ beers",
       lat: 55.683796786548264,
@@ -56,7 +65,7 @@ defmodule PivoWeb.MapLive do
       vino: false
     }
 
-    locations = [peders, taphouse, rallys, mikkeller_bottle_shop]
+    locations = [peders, taphouse, rallys, mikkeller_bottle_shop, kihoskh]
 
     access_token =
       Application.get_env(:pivo, :mapbox)

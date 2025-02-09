@@ -8,7 +8,7 @@ const MapHook = {
 
     const map = new mapboxgl.Map({
       container: this.el.id,
-      zoom: 13,
+      zoom: 12,
       center: [
         12.569157292471003,
         55.67622541130143
@@ -38,10 +38,15 @@ const MapHook = {
       // create a HTML element for each feature
       const el = document.createElement('div');
       el.className = 'marker';
-      el.style.backgroundImage=`url(images/${location.logo})`; // specify the image path here
+      el.style.background = `linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0)), url('images/${location.logo}')`;
+      el.style.width = '50px';
+      el.style.height = '50px';
+      el.style.borderRadius = '50%';
+      el.style.backgroundSize = 'cover';
+      el.style.backgroundPosition = 'center';
 
       const html = `<div>
-        <h1 class="text-lg font-semibold">${location.name}</h1>
+        <h1 class="font-semibold">${location.name}</h1>
       </div>`;
 
       // Create a new marker.
@@ -50,7 +55,7 @@ const MapHook = {
         .setPopup(new mapboxgl.Popup({offset: 25}).setHTML(html))
         .addTo(map);
 
-      marker.togglePopup(); // toggle popup open or closed
+      //marker.togglePopup(); // toggle popup open or closed
     }
   },
 };

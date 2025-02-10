@@ -45,7 +45,7 @@ defmodule PivoWeb.BeerStatusLive.Index do
       <div id="beer_status" phx-update="stream">
         <div
           :for={{dom_id, beer_status} <- @streams.beer_status_collection}
-          class="grid grid-cols-8 border-b border-gray-200 p-4"
+          class="grid grid-cols-8 border-b border-gray-200 py-4"
           id={dom_id}
         >
           <div>

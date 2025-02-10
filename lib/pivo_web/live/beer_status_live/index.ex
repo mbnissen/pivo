@@ -42,28 +42,31 @@ defmodule PivoWeb.BeerStatusLive.Index do
   def render(assigns) do
     ~H"""
     <div class="px-4">
-      <.table id="beer_status" rows={@streams.beer_status_collection}>
-        <:col :let={{_id, beer_status}} label="Beer shop">
-          <div class="flex gap-2">
-            <img
-              src={~p"/images/#{@beer_shops[beer_status.beer_shop_id].logo}"}
-              class="w-8 h-8 rounded-full"
-            />
-            <span class="pt-1">
-              {@beer_shops[beer_status.beer_shop_id].name}
-            </span>
+      <div
+        :for={{dom_id, beer_status} <- @streams.beer_status_collection}
+        class="grid grid-cols-10 border-b border-gray-200 py-2"
+        id={dom_id}
+      >
+        <div>
+          <img
+            src={~p"/images/#{@beer_shops[beer_status.beer_shop_id].logo}"}
+            class="w-10 h-10 rounded-full"
+          />
+        </div>
+        <div class="col-span-8">
+          <span class="pt-1 font-semibold">
+            {@beer_shops[beer_status.beer_shop_id].name}
+          </span>
+          <div class="text-xs text-zinc-500">
+            {Timex.from_now(beer_status.inserted_at)}
+            <span :if={beer_status.username}>- {beer_status.username}</span>
           </div>
-        </:col>
-        <:col :let={{_id, beer_status}} label="Available?">
-          <img :if={beer_status.is_available} src="/images/beer.png" class="w-6 h-6" />
-          <img :if={!beer_status.is_available} src="/images/no_beer.png" class="w-6 h-6" />
-        </:col>
-        <:col :let={{_id, beer_status}} label="By">{beer_status.username}</:col>
-        <:col :let={{_id, beer_status}} label="When">
-          {Calendar.strftime(beer_status.inserted_at, "%H:%M:%S - %d/%m - %Y")}
-        </:col>
-      </.table>
-
+        </div>
+        <div class="pt-1 flex justify-end">
+          <img :if={beer_status.is_available} src="/images/beer.png" class="w-8 h-8" />
+          <img :if={!beer_status.is_available} src="/images/no_beer.png" class="w-8 h-8" />
+        </div>
+      </div>
       <.modal
         :if={@live_action in [:new, :edit]}
         id="beer_status-modal"

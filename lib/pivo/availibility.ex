@@ -17,7 +17,6 @@ defmodule Pivo.Availibility do
         website: "https://www.kihoskh.dk",
         lat: 55.66644759532798,
         lng: 12.55304832864403,
-        vino: true,
         style: "Can"
       },
       %{
@@ -27,25 +26,22 @@ defmodule Pivo.Availibility do
         website: "https://www.rallys.dk",
         lat: 55.64846734279557,
         lng: 12.532315540117958,
-        vino: true,
         style: "Can"
       },
       %{
         id: "afec5c50-637f-487d-a03f-e780ac1712c9",
         name: "Peders",
         logo: "peders_logo.png",
-        lat: 55.6792037555745,
-        lng: 12.569022168955275,
-        vino: true,
+        lat: 55.67906605956423,
+        lng: 12.569047498969876,
         style: "Side pull"
       },
       %{
         id: "5b37fbb7-d03b-4536-b8dc-34ee9b3e7fc3",
         name: "Taphouse",
         logo: "taphouse_logo.png",
-        lat: 55.67623174183128,
-        lng: 12.571488122353864,
-        vino: true,
+        lat: 55.676187023783946,
+        lng: 12.57152462344214,
         style: "Side pull"
       },
       %{
@@ -54,7 +50,30 @@ defmodule Pivo.Availibility do
         logo: "mikkeller_bottle_shop_logo.png",
         lat: 55.683796786548264,
         lng: 12.569227882377323,
-        vino: false,
+        style: "Can"
+      },
+      %{
+        id: "b04c2089-237e-4bb3-af74-792a5a42149b",
+        name: "Væskebalancen",
+        logo: "vaeskebalancen_logo.png",
+        lat: 55.68649145580039,
+        lng: 12.558541993254456,
+        style: "Can"
+      },
+      %{
+        id: "13a153e5-f435-4d2f-a819-d3a36e0417b5",
+        name: "Bar' Godt",
+        logo: "bar_godt_logo.jpeg",
+        lat: 55.68002590186607,
+        lng: 12.5752204,
+        style: "Can"
+      },
+      %{
+        id: "7d27d9bb-7a8c-4862-bee6-49eeb4d4a4e0",
+        name: "Godt Øl",
+        logo: "godt_oel_logo.png",
+        lat: 55.676777201726246,
+        lng: 12.57611779325444,
         style: "Can"
       }
     ]
@@ -79,7 +98,7 @@ defmodule Pivo.Availibility do
 
   """
   def list_beer_status do
-    Repo.all(BeerStatus)
+    from(u in BeerStatus, order_by: [desc: u.inserted_at]) |> Repo.all()
   end
 
   @doc """

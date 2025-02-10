@@ -17,5 +17,9 @@ defmodule Pivo.Availibility.BeerStatus do
     beer_status
     |> cast(attrs, [:username, :is_available, :beer_shop_id])
     |> validate_required([:is_available, :beer_shop_id])
+    |> validate_length(:username, min: 3, max: 20)
+    |> validate_format(:username, ~r/^[a-zA-Z0-9_]+$/,
+      message: "must only contain letters, numbers, and underscores"
+    )
   end
 end

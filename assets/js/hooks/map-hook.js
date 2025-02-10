@@ -40,13 +40,6 @@ const MapHook = {
       el.style.backgroundImage = `url(/images/${location.logo})`;
       el.classList.add(`${location.vino ? 'border-green-500' : 'border-red-500'}`);
 
-      const isoDate = location.latest_update; 
-      const date = new Date(isoDate);
-
-      const pad = (num) => num.toString().padStart(2, "0");
-
-      const formattedDateTime = `${pad(date.getHours())}:${pad(date.getMinutes())} ${pad(date.getDate())}/${pad(date.getMonth() + 1)}`;
-
       const html = `<div>
         <h1 class="font-semibold pb-1">${location.name}</h1>
         <div class="flex items-center gap-x-1">
@@ -54,7 +47,7 @@ const MapHook = {
           <p>${location.style}</p>
         </div>
         <div class="flex text-zinc-500 text-xs pt-2">
-          Latest update: ${location.latest_update ? formattedDateTime : 'No updates'}
+          Latest update: ${location.latest_update} 
         </div>
       </div>`;
 

@@ -35,36 +35,38 @@ defmodule PivoWeb.BeerStatusLive.Index do
 
   @impl true
   def handle_info({PivoWeb.BeerStatusLive.FormComponent, {:saved, beer_status}}, socket) do
-    {:noreply, stream_insert(socket, :beer_status_collection, beer_status)}
+    {:noreply, stream_insert(socket, :beer_status_collection, beer_status, at: 0)}
   end
 
   @impl true
   def render(assigns) do
     ~H"""
-    <div class="px-4">
-      <div
-        :for={{dom_id, beer_status} <- @streams.beer_status_collection}
-        class="grid grid-cols-10 border-b border-gray-200 py-2"
-        id={dom_id}
-      >
-        <div>
-          <img
-            src={~p"/images/#{@beer_shops[beer_status.beer_shop_id].logo}"}
-            class="w-10 h-10 rounded-full"
-          />
-        </div>
-        <div class="col-span-8">
-          <span class="pt-1 font-semibold">
-            {@beer_shops[beer_status.beer_shop_id].name}
-          </span>
-          <div class="text-xs text-zinc-500">
-            {Timex.from_now(beer_status.inserted_at)}
-            <span :if={beer_status.username}>- {beer_status.username}</span>
+    <div class="px-4 max-w-lg mx-auto">
+      <div id="beer_status" phx-update="stream">
+        <div
+          :for={{dom_id, beer_status} <- @streams.beer_status_collection}
+          class="grid grid-cols-8 border-b border-gray-200 p-4"
+          id={dom_id}
+        >
+          <div>
+            <img
+              src={~p"/images/#{@beer_shops[beer_status.beer_shop_id].logo}"}
+              class="w-10 h-10 rounded-full"
+            />
           </div>
-        </div>
-        <div class="pt-1 flex justify-end">
-          <img :if={beer_status.is_available} src="/images/beer.png" class="w-8 h-8" />
-          <img :if={!beer_status.is_available} src="/images/no_beer.png" class="w-8 h-8" />
+          <div class="col-span-6">
+            <span class="pt-1 font-semibold">
+              {@beer_shops[beer_status.beer_shop_id].name}
+            </span>
+            <div class="text-xs text-zinc-500">
+              {Timex.from_now(beer_status.inserted_at)}
+              <span :if={beer_status.username}>- {beer_status.username}</span>
+            </div>
+          </div>
+          <div class="pt-1 flex justify-end">
+            <img :if={beer_status.is_available} src="/images/beer.png" class="w-8 h-8" />
+            <img :if={!beer_status.is_available} src="/images/no_beer.png" class="w-8 h-8" />
+          </div>
         </div>
       </div>
       <.modal

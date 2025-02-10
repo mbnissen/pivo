@@ -8,7 +8,6 @@ defmodule PivoWeb.BeerStatusLive.FormComponent do
     ~H"""
     <div>
       <.header>{@title}</.header>
-
       <.simple_form
         for={@form}
         id="beer_status-form"

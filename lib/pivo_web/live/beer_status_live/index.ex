@@ -23,13 +23,13 @@ defmodule PivoWeb.BeerStatusLive.Index do
 
   defp apply_action(socket, :new, _params) do
     socket
-    |> assign(:page_title, "New beer status")
+    |> assign(:page_title, "New Vino status")
     |> assign(:beer_status, %BeerStatus{})
   end
 
   defp apply_action(socket, :index, _params) do
     socket
-    |> assign(:page_title, "Listing beer status")
+    |> assign(:page_title, "Listing Vino status")
     |> assign(:beer_status, nil)
   end
 
@@ -45,16 +45,16 @@ defmodule PivoWeb.BeerStatusLive.Index do
       <div id="beer_status" phx-update="stream">
         <div
           :for={{dom_id, beer_status} <- @streams.beer_status_collection}
-          class="grid grid-cols-8 border-b border-gray-200 py-4"
+          class="flex border-b border-gray-200 py-4"
           id={dom_id}
         >
-          <div>
+          <div class="flex-none w-12">
             <img
               src={~p"/images/#{@beer_shops[beer_status.beer_shop_id].logo}"}
               class="w-10 h-10 rounded-full"
             />
           </div>
-          <div class="col-span-6">
+          <div class="flex-1">
             <span class="pt-1 font-semibold">
               {@beer_shops[beer_status.beer_shop_id].name}
             </span>
@@ -63,7 +63,7 @@ defmodule PivoWeb.BeerStatusLive.Index do
               <span :if={beer_status.username}>- {beer_status.username}</span>
             </div>
           </div>
-          <div class="pt-1 flex justify-end">
+          <div class="pt-1 flex flex-none w-12 justify-end">
             <img :if={beer_status.is_available} src="/images/beer.png" class="w-8 h-8" />
             <img :if={!beer_status.is_available} src="/images/no_beer.png" class="w-8 h-8" />
           </div>

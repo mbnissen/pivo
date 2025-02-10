@@ -20,6 +20,13 @@ defmodule PivoWeb.MapLive do
 
   @impl true
   def mount(_params, _session, socket) do
+    try do
+      ThisWillError.really()
+    rescue
+      my_exception ->
+        Sentry.capture_exception(my_exception, stacktrace: __STACKTRACE__)
+    end
+
     locations =
       Availibility.list_beer_shops()
       |> Enum.map(fn beer_shop ->

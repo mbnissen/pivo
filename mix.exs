@@ -30,8 +30,9 @@ defmodule Pivo.MixProject do
   # Specifies your project dependencies.
   #
   # Type `mix help deps` for examples and options.
-  defp deps do
-    [
+  defp deps do [
+      {:sentry, "~> 10.2.0"},
+      {:hackney, "~> 1.8"},
       {:timex, "~> 3.0"},
       {:phoenix, "~> 1.7.19"},
       {:phoenix_ecto, "~> 4.5"},

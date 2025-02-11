@@ -1,18 +1,16 @@
-<header class="px-4 sm:px-6 lg:px-8">
-  <div class="flex items-center justify-between border-b border-zinc-100 py-3 text-sm">
-    <.link navigate={~p"/"} class="flex items-center gap-2">
-      <img src={~p"/images/beer.png"} width="36" />
-      <p class="font-semibold">
-        Where is Vino?
-      </p>
-    </.link>
-    <div class="flex items-center gap-1 font-semibold leading-6 text-zinc-900">
-      <.link patch={~p"/beer_status/new"}>
-         <span class="pt-3">Update Vino</span>
-        <.icon name="hero-plus-circle" class="h-6 w-6 mb-[2.5px]" />
+<header>
+  <.navbar>
+    <:title>
+      <.link navigate={~p"/"} class="flex items-center gap-2">
+        <img src={~p"/images/beer.png"} width="36" />
+        <p class="font-semibold">
+          Where is Vino?
+        </p>
       </.link>
-    </div>
-  </div>
+    </:title>
+    <.link patch={~p"/beer_status/new"}>Add beer status</.link>
+    <.link patch={~p"/beer_status/new"}>Latest status</.link>
+  </.navbar>
 </header>
 <main>
   <.flash_group flash={@flash} />

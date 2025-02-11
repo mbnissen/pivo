@@ -19,6 +19,61 @@ defmodule PivoWeb.CoreComponents do
 
   alias Phoenix.LiveView.JS
 
+  slot :title
+  slot :inner_block, required: true
+
+  def navbar(assigns) do
+    ~H"""
+    <nav class="border-b border-zinc-400 px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between py-3 text-sm">
+        {render_slot(@title)}
+        <button
+          id="show-navbar-button"
+          phx-click={show_mobile_navbar()}
+          class="inline-flex items-center md:hidden"
+        >
+          <.icon name="hero-bars-3" class="h-8 w-8" />
+        </button>
+        <button
+          id="hide-navbar-button"
+          phx-click={hide_mobile_navbar()}
+          class="hidden inline-flex items-center md:hidden"
+        >
+          <.icon name="hero-bars-3" class="h-8 w-8" />
+        </button>
+        <div
+          id="navbar-default"
+          class="text-lg absolute shadow-md z-20 top-[59px] right-0 md:block text-left dropdown border-b border-l border-zinc-400"
+        >
+          <ul class="bg-white p-4 flex flex-col text-right gap-4 pr-6">
+            {render_slot(@inner_block)}
+          </ul>
+        </div>
+      </div>
+    </nav>
+    """
+  end
+
+  def show_mobile_navbar(js \\ %JS{}) do
+    js
+    |> JS.show(
+      to: "#navbar-default",
+      transition: {"ease-in-out duration-300", "opacity-0", "opacity-100"}
+    )
+    |> JS.hide(to: "#show-navbar-button")
+    |> JS.show(to: "#hide-navbar-button")
+  end
+
+  def hide_mobile_navbar(js \\ %JS{}) do
+    js
+    |> JS.hide(
+      to: "#navbar-default",
+      transition: {"ease-in-out duration-300", "opacity-100", "opacity-0"}
+    )
+    |> JS.show(to: "#show-navbar-button")
+    |> JS.hide(to: "#hide-navbar-button")
+  end
+
   @doc """
   Renders a modal.
 

@@ -49,7 +49,7 @@ defmodule PivoWeb.CoreComponents do
         </button>
         <div
           id="navbar-default"
-          class="absolute shadow-md z-20 top-[59px] right-0 dropdown border-b border-l border-zinc-400"
+          class="hidden absolute shadow-md z-20 top-[59px] right-0 dropdown border-b border-l border-zinc-400"
         >
           <ul class="bg-white pl-4 p-2 pr-5 flex flex-col text-left">
             <li

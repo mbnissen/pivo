@@ -8,8 +8,8 @@
         </p>
       </.link>
     </:title>
-    <.link patch={~p"/beer_status/new"}>Add beer status</.link>
-    <.link patch={~p"/beer_status/new"}>Latest status</.link>
+    <:link icon="hero-plus-circle" label="New Vino status" navigate={~p"/beer_status/new"} />
+    <:link icon="hero-list-bullet-solid" label="List Vino status" navigate={~p"/beer_status"} />
   </.navbar>
 </header>
 <main>

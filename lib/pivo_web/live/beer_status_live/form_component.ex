@@ -22,6 +22,7 @@ defmodule PivoWeb.BeerStatusLive.FormComponent do
           options={@beer_shops |> Enum.map(&{&1.name, &1.id})}
         />
         <.input field={@form[:username]} type="text" label="Username (optional)" />
+        <.input field={@form[:comment]} type="textarea" placeholder="Add comment if you want" />
         <.input field={@form[:is_available]} type="checkbox" label="Is available?" value={true} />
         <:actions>
           <.button phx-value-fuck="this" phx-disable-with="Saving...">Save Beer status</.button>
@@ -51,7 +52,6 @@ defmodule PivoWeb.BeerStatusLive.FormComponent do
   end
 
   def handle_event("save", %{"beer_status" => beer_status_params}, socket) do
-    dbg(beer_status_params)
     save_beer_status(socket, socket.assigns.action, beer_status_params)
   end
 

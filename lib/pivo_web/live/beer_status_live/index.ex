@@ -58,6 +58,9 @@ defmodule PivoWeb.BeerStatusLive.Index do
             <span class="pt-1 font-semibold">
               {@beer_shops[beer_status.beer_shop_id].name}
             </span>
+            <div class="text-sm text-zinc-800 mb-2">
+              <p>{beer_status.comment}</p>
+            </div>
             <div class="text-xs text-zinc-500">
               {Timex.from_now(beer_status.inserted_at)}
               <span :if={beer_status.username}>- {beer_status.username}</span>

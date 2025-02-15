@@ -1,4 +1,5 @@
 defmodule PivoWeb.AboutLive do
+  @moduledoc false
   use PivoWeb, :live_view
 
   @impl true

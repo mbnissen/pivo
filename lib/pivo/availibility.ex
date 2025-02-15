@@ -4,9 +4,9 @@ defmodule Pivo.Availibility do
   """
 
   import Ecto.Query, warn: false
-  alias Pivo.Repo
 
   alias Pivo.Availibility.BeerStatus
+  alias Pivo.Repo
 
   def list_beer_shops do
     [
@@ -80,12 +80,7 @@ defmodule Pivo.Availibility do
   end
 
   def get_latest_beer_status_by_shop_id(shop_id) do
-    from(bs in BeerStatus,
-      where: bs.beer_shop_id == ^shop_id,
-      order_by: [desc: bs.inserted_at],
-      limit: 1
-    )
-    |> Repo.one()
+    Repo.one(from(bs in BeerStatus, where: bs.beer_shop_id == ^shop_id, order_by: [desc: bs.inserted_at], limit: 1))
   end
 
   @doc """
@@ -98,7 +93,7 @@ defmodule Pivo.Availibility do
 
   """
   def list_beer_status do
-    from(u in BeerStatus, order_by: [desc: u.inserted_at]) |> Repo.all()
+    Repo.all(from(u in BeerStatus, order_by: [desc: u.inserted_at]))
   end
 
   @doc """

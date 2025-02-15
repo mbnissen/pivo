@@ -1,31 +1,5 @@
 import Config
 
-# Configure your database
-#
-# The MIX_TEST_PARTITION environment variable can be used
-# to provide built-in test partitioning in CI environment.
-# Run `mix help test` for more information.
-config :pivo, Pivo.Repo,
-  username: "postgres",
-  password: "postgres",
-  hostname: "localhost",
-  database: "pivo_test#{System.get_env("MIX_TEST_PARTITION")}",
-  pool: Ecto.Adapters.SQL.Sandbox,
-  pool_size: System.schedulers_online() * 2
-
-# We don't run a server during test. If one is required,
-# you can enable the server option below.
-config :pivo, PivoWeb.Endpoint,
-  http: [ip: {127, 0, 0, 1}, port: 4002],
-  secret_key_base: "b7BJ9hEU4KmqbuIfUUJspgZn4zb+689TdpiOJttlteuA5P+UvMrLX+Mcy7BbWrUc",
-  server: false
-
-# In test we don't send emails
-config :pivo, Pivo.Mailer, adapter: Swoosh.Adapters.Test
-
-# Disable swoosh api client as it is only required for production adapters
-config :swoosh, :api_client, false
-
 # Print only warnings and errors during test
 config :logger, level: :warning
 
@@ -35,3 +9,30 @@ config :phoenix, :plug_init_mode, :runtime
 # Enable helpful, but potentially expensive runtime checks
 config :phoenix_live_view,
   enable_expensive_runtime_checks: true
+
+# Configure your database
+#
+# The MIX_TEST_PARTITION environment variable can be used
+
+# In test we don't send emails
+# to provide built-in test partitioning in CI environment.
+# Run `mix help test` for more information.
+config :pivo, Pivo.Mailer, adapter: Swoosh.Adapters.Test
+
+config :pivo, Pivo.Repo,
+  username: "postgres",
+  password: "postgres",
+  hostname: "localhost",
+  database: "pivo_test#{System.get_env("MIX_TEST_PARTITION")}",
+  pool: Ecto.Adapters.SQL.Sandbox,
+  # We don't run a server during test. If one is required,
+  # you can enable the server option below.
+  pool_size: System.schedulers_online() * 2
+
+config :pivo, PivoWeb.Endpoint,
+  http: [ip: {127, 0, 0, 1}, port: 4002],
+  secret_key_base: "b7BJ9hEU4KmqbuIfUUJspgZn4zb+689TdpiOJttlteuA5P+UvMrLX+Mcy7BbWrUc",
+  server: false
+
+# Disable swoosh api client as it is only required for production adapters
+config :swoosh, :api_client, false

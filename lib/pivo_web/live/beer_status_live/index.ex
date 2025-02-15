@@ -1,4 +1,5 @@
 defmodule PivoWeb.BeerStatusLive.Index do
+  @moduledoc false
   use PivoWeb, :live_view
 
   alias Pivo.Availibility
@@ -7,8 +8,7 @@ defmodule PivoWeb.BeerStatusLive.Index do
   @impl true
   def mount(_params, _session, socket) do
     beer_shops =
-      Availibility.list_beer_shops()
-      |> Enum.reduce(%{}, fn beer_shop, acc -> Map.put(acc, beer_shop.id, beer_shop) end)
+      Enum.reduce(Availibility.list_beer_shops(), %{}, fn beer_shop, acc -> Map.put(acc, beer_shop.id, beer_shop) end)
 
     {:ok,
      socket

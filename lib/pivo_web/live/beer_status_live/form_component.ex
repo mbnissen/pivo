@@ -1,4 +1,5 @@
 defmodule PivoWeb.BeerStatusLive.FormComponent do
+  @moduledoc false
   use PivoWeb, :live_component
 
   alias Pivo.Availibility

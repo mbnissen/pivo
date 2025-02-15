@@ -19,15 +19,14 @@ defmodule PivoWeb.ConnCase do
 
   using do
     quote do
+      use PivoWeb, :verified_routes
+      import Phoenix.ConnTest
+      import PivoWeb.ConnCase
+      import Plug.Conn
       # The default endpoint for testing
       @endpoint PivoWeb.Endpoint
 
-      use PivoWeb, :verified_routes
-
       # Import conveniences for testing with connections
-      import Plug.Conn
-      import Phoenix.ConnTest
-      import PivoWeb.ConnCase
     end
   end
 

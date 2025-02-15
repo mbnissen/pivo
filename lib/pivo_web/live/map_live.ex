@@ -1,4 +1,5 @@
 defmodule PivoWeb.MapLive do
+  @moduledoc false
   use PivoWeb, :live_view
 
   alias Pivo.Availibility
@@ -21,8 +22,7 @@ defmodule PivoWeb.MapLive do
   @impl true
   def mount(_params, _session, socket) do
     locations =
-      Availibility.list_beer_shops()
-      |> Enum.map(fn beer_shop ->
+      Enum.map(Availibility.list_beer_shops(), fn beer_shop ->
         latest_status =
           Availibility.get_latest_beer_status_by_shop_id(beer_shop.id)
 
@@ -45,7 +45,8 @@ defmodule PivoWeb.MapLive do
       end)
 
     access_token =
-      Application.get_env(:pivo, :mapbox)
+      :pivo
+      |> Application.get_env(:mapbox)
       |> Keyword.get(:access_token)
 
     {:ok, assign(socket, access_token: access_token, locations: locations)}

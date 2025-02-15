@@ -20,6 +20,7 @@ defmodule PivoWeb.ConnCase do
   using do
     quote do
       use PivoWeb, :verified_routes
+
       import Phoenix.ConnTest
       import PivoWeb.ConnCase
       import Plug.Conn

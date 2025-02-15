@@ -77,10 +77,10 @@ config :pivo, PivoWeb.Endpoint,
     ]
   ]
 
-# Enable dev routes for dashboard and mailbox
-# different ports.
-
 config :pivo, dev_routes: true
 
 # Disable swoosh api client as it is only required for production adapters.
 config :swoosh, :api_client, false
+
+# Enable dev routes for dashboard and mailbox
+# different ports.

@@ -24,6 +24,15 @@ config :logger, :console,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
+config :phoenix_analytics,
+  duckdb_path: System.get_env("DUCKDB_PATH") || "analytics.duckdb",
+  app_domain: "whereisvino.dk",
+  postgres_conn: "dbname=pivo_dev user=postgres password=postgres host=localhost",
+  cache_ttl: 120,
+  in_memory: true
+
+config :pivo, BasicAuth, username: "admin", password: "secret"
+
 # Configures the mailer
 #
 # By default it uses the "Local" adapter which stores the emails

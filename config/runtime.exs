@@ -47,6 +47,16 @@ if config_env() == :prod do
   host = System.get_env("PHX_HOST") || "example.com"
   port = String.to_integer(System.get_env("PORT") || "4000")
 
+  config :phoenix_analytics,
+    postgres_conn: database_url,
+    # seconds
+    cache_ttl: System.get_env("CACHE_TTL") || 120,
+    in_memory: true
+
+  config :pivo, BasicAuth,
+    username: System.fetch_env!("ADMIN_USERNAME"),
+    password: System.fetch_env!("ADMIN_PASSWORD")
+
   config :pivo, Pivo.Repo,
     # ssl: true,
     url: database_url,

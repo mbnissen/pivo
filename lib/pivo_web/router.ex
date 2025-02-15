@@ -1,5 +1,6 @@
 defmodule PivoWeb.Router do
   use PivoWeb, :router
+  use PhoenixAnalytics.Web, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -14,6 +15,10 @@ defmodule PivoWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :admin do
+    plug PivoWeb.Plugs.BasicAuth
+  end
+
   scope "/", PivoWeb do
     pipe_through :browser
 
@@ -21,6 +26,12 @@ defmodule PivoWeb.Router do
     live "/about", AboutLive
     live "/beer_status", BeerStatusLive.Index, :index
     live "/beer_status/new", BeerStatusLive.Index, :new
+  end
+
+  scope "/admin", PivoWeb do
+    pipe_through [:browser, :admin]
+
+    phoenix_analytics_dashboard("/analytics")
   end
 
   # Other scopes may use custom stacks.

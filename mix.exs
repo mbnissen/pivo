@@ -32,6 +32,7 @@ defmodule Pivo.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:phoenix_analytics, git: "https://github.com/mbnissen/PhoenixAnalytics", branch: "master"},
       {:mix_audit, "~> 2.1", only: [:dev, :test], runtime: false},
       {:styler, "~> 1.2", only: [:dev, :test], runtime: false},
       {:sentry, "~> 10.2.0"},

@@ -31,6 +31,7 @@ defmodule Pivo.MixProject do
   #
   # Type `mix help deps` for examples and options.
   defp deps do [
+      {:mix_audit, "~> 2.1", only: [:dev, :test], runtime: false},
       {:sentry, "~> 10.2.0"},
       {:hackney, "~> 1.8"},
       {:timex, "~> 3.0"},

@@ -3,13 +3,14 @@
     <:title>
       <.link navigate={~p"/"} class="flex items-center gap-2">
         <img src={~p"/images/beer.png"} width="36" />
-        <p class="font-semibold">
-          Where is Vino?
+        <p class="text-lg font-semibold">
+          WhereIsVino.dk
         </p>
       </.link>
     </:title>
-    <:link icon="hero-plus-circle" label="New Vino status" navigate={~p"/beer_status/new"} />
     <:link icon="hero-list-bullet-solid" label="List Vino status" navigate={~p"/beer_status"} />
+    <:link icon="hero-plus-circle" label="New Vino status" navigate={~p"/beer_status/new"} />
+    <:link icon="hero-information-circle" label="About" navigate={~p"/about"} />
   </.navbar>
 </header>
 <main>

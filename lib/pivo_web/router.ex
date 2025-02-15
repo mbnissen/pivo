@@ -18,6 +18,7 @@ defmodule PivoWeb.Router do
     pipe_through :browser
 
     live "/", MapLive
+    live "/about", AboutLive
     live "/beer_status", BeerStatusLive.Index, :index
     live "/beer_status/new", BeerStatusLive.Index, :new
   end

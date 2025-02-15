@@ -21,7 +21,7 @@ defmodule PivoWeb.AboutLive do
         </p>
         <p class="text-lg text-gray-700 mb-8">
           Whether you've spotted it in a cozy pub, a trendy bar, or a hidden gem, share your findings with the community.
-          Together, we make sure no one misses out on a great pint of Vinohradská 11! 🍻
+          Together, we make sure no one misses out on a great beer of Vinohradská 11! 🍻
         </p>
         <.link
           href={~p"/"}

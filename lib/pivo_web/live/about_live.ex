@@ -11,7 +11,7 @@ defmodule PivoWeb.AboutLive do
   def render(assigns) do
     ~H"""
     <div class="min-h-screen bg-gray-100 flex flex-col items-center p-4">
-      <div class="w-full max-w-lg bg-white shadow-lg rounded-2xl p-6 text-center">
+      <div class="w-full max-w-lg sm:max-w-xl bg-white shadow-lg rounded-2xl p-6 text-center">
         <p class="text-lg text-gray-700 mb-4">
           This page is dedicated to our favorite beer: <span class="font-semibold">Vinohradská 11</span>! 🍺
         </p>

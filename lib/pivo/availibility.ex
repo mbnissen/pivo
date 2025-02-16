@@ -75,6 +75,14 @@ defmodule Pivo.Availibility do
         lat: 55.676777201726246,
         lng: 12.57611779325444,
         style: "Can"
+      },
+      %{
+        id: "47769859-e46e-4251-ba2e-8c75c3deaf97",
+        name: "Tap 21 Craft Beer",
+        logo: "tap_21_logo.png",
+        lat: 55.678297274206976
+        lng: 12.54701247420993,
+        style: "Can"
       }
     ]
   end

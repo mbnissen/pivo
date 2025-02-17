@@ -36,7 +36,7 @@ const MapHook = {
 
     for (const location of locations) {
       const el = document.createElement('div');
-      el.className = `bg-cover rounded-full w-8 h-8 border-2`;
+      el.className = `bg-cover rounded-full w-10 h-10 border-2`;
       el.style.backgroundImage = `url(/images/${location.logo})`;
       el.classList.add(`${location.vino ? 'border-green-500' : 'border-red-500'}`);
 

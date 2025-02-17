@@ -48,20 +48,20 @@ defmodule PivoWeb.BeerStatusLive.Index do
           class="flex border-b border-gray-200 py-4"
           id={dom_id}
         >
-          <div class="flex-none w-12">
+          <div class="flex-none w-14">
             <img
               src={~p"/images/#{@beer_shops[beer_status.beer_shop_id].logo}"}
-              class="w-10 h-10 rounded-full"
+              class="w-12 h-12 rounded-full"
             />
           </div>
           <div class="flex-1">
             <span class="pt-1 font-semibold">
               {@beer_shops[beer_status.beer_shop_id].name}
             </span>
-            <div class="text-sm text-zinc-800 mb-2">
+            <div :if={beer_status.comment} class="text-sm text-zinc-800 mb-2">
               <p>{beer_status.comment}</p>
             </div>
-            <div class="text-xs text-zinc-500">
+            <div class="text-xs text-zinc-500 pt-1">
               {Timex.from_now(beer_status.inserted_at)}
               <span :if={beer_status.username}>- {beer_status.username}</span>
             </div>

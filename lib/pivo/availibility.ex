@@ -101,7 +101,7 @@ defmodule Pivo.Availibility do
 
   """
   def list_beer_status do
-    Repo.all(from(u in BeerStatus, order_by: [desc: u.inserted_at]))
+    Repo.all(from(u in BeerStatus, order_by: [desc: u.inserted_at], limit: 100))
   end
 
   @doc """

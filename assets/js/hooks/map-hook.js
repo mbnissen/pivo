@@ -47,7 +47,7 @@ const MapHook = {
           <p>${location.style}</p>
         </div>
         <div class="flex text-zinc-500 text-xs pt-2">
-          Latest update: ${location.latest_update} 
+          Latest report: ${location.latest_update} 
         </div>
       </div>`;
 

@@ -23,13 +23,13 @@ defmodule PivoWeb.BeerStatusLive.Index do
 
   defp apply_action(socket, :new, _params) do
     socket
-    |> assign(:page_title, "New Vino status")
+    |> assign(:page_title, "Report Vino")
     |> assign(:beer_status, %BeerStatus{is_available: true})
   end
 
   defp apply_action(socket, :index, _params) do
     socket
-    |> assign(:page_title, "Listing Vino status")
+    |> assign(:page_title, "Latest reports")
     |> assign(:beer_status, nil)
   end
 

@@ -70,12 +70,9 @@ defmodule PivoWeb.BeerStatusLive.FormComponent do
         <.input
           field={@form[:beer_shop_id]}
           type="select"
-          label="Beer shop"
           options={@beer_shops |> Enum.map(&{&1.name, &1.id})}
         />
-        <.input field={@form[:username]} type="text" label="Username (optional)" />
-        <.input field={@form[:comment]} type="textarea" placeholder="Add comment if you want" />
-        <ul class="grid w-full gap-6 md:grid-cols-2">
+        <ul class="grid w-full gap-2 grid-cols-2">
           <li>
             <input
               type="radio"
@@ -88,10 +85,10 @@ defmodule PivoWeb.BeerStatusLive.FormComponent do
             />
             <label
               for="vino-available"
-              class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-green-600 border-2"
+              class="inline-flex items-center justify-between w-full px-3 py-2 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:text-zinc-700 peer-checked:border-green-600 border-2"
             >
-              <div class="w-full font-semibold">In stock</div>
-              <img src={~p"/images/beer.png"} width="36" />
+              <div class="w-full text-sm">In stock</div>
+              <img src={~p"/images/beer.png"} width="24" />
             </label>
           </li>
           <li>
@@ -105,15 +102,19 @@ defmodule PivoWeb.BeerStatusLive.FormComponent do
             />
             <label
               for="vino-not-available"
-              class="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked:border-red-600 border-2"
+              class="inline-flex items-center justify-between w-full px-3 py-2 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked-text-zinc-700 peer-checked:border-red-600 border-2"
             >
-              <div class="w-full font-semibold">Out of stock</div>
-              <img src={~p"/images/no_beer.png"} width="36" />
+              <div class="w-full text-sm">Out of stock</div>
+              <img src={~p"/images/no_beer.png"} width="24" />
             </label>
           </li>
         </ul>
+        <.input field={@form[:username]} type="text" placeholder="Add a username (optional)" />
+        <.input field={@form[:comment]} type="textarea" placeholder="Add a comment (optional)" />
         <:actions>
-          <.button phx-value-fuck="this" phx-disable-with="Saving...">Save Beer status</.button>
+          <.button class="py-4 w-full" phx-disable-with="Saving...">
+            Report Vino
+          </.button>
         </:actions>
       </.simple_form>
     </div>

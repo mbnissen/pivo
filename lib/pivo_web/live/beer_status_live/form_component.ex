@@ -37,7 +37,7 @@ defmodule PivoWeb.BeerStatusLive.FormComponent do
 
         {:noreply,
          socket
-         |> put_flash(:info, "Beer status created successfully")
+         |> put_flash(:info, "Success - thanks for your contribution!")
          |> push_patch(to: socket.assigns.patch)}
 
       {:error, %Ecto.Changeset{} = changeset} ->
@@ -112,7 +112,7 @@ defmodule PivoWeb.BeerStatusLive.FormComponent do
         <.input field={@form[:username]} type="text" placeholder="Add a username (optional)" />
         <.input field={@form[:comment]} type="textarea" placeholder="Add a comment (optional)" />
         <:actions>
-          <.button class="py-4 w-full" phx-disable-with="Saving...">
+          <.button class="py-4 w-full" phx-disable-with="Reporting...">
             Report Vino
           </.button>
         </:actions>

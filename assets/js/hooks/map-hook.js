@@ -6,9 +6,12 @@ const MapHook = {
 
     const locations = JSON.parse(this.el.dataset.locations);
 
+    const darkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
     const map = new mapboxgl.Map({
       container: this.el.id,
       zoom: 12,
+      style: darkMode ? 'mapbox://styles/mapbox/dark-v11' : 'mapbox://styles/mapbox/standard',
       center: [
         12.569157292471003,
         55.67622541130143

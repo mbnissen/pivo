@@ -52,7 +52,7 @@ defmodule PivoWeb.CoreComponents do
           id="navbar-default"
           class="hidden absolute shadow-md z-20 top-[59px] right-0 dropdown border-b border-l border-zinc-400"
         >
-          <ul class="bg-white pl-4 p-2 pr-5 flex flex-col text-left">
+          <ul class="bg-white dark:bg-gray-800 pl-4 p-2 pr-5 flex flex-col text-left">
             <li
               :for={{link, _i} <- Enum.with_index(@link)}
               class="border-zinc-300 border-b-2 last:border-b-0 py-4"
@@ -120,7 +120,11 @@ defmodule PivoWeb.CoreComponents do
       data-cancel={JS.exec(@on_cancel, "phx-remove")}
       class="relative z-50 hidden"
     >
-      <div id={"#{@id}-bg"} class="bg-zinc-50/90 fixed inset-0 transition-opacity" aria-hidden="true" />
+      <div
+        id={"#{@id}-bg"}
+        class="bg-zinc-50/90 dark:bg-gray-900/90 fixed inset-0 transition-opacity"
+        aria-hidden="true"
+      />
       <div
         class="fixed inset-0 overflow-y-auto"
         aria-labelledby={"#{@id}-title"}
@@ -136,7 +140,7 @@ defmodule PivoWeb.CoreComponents do
               phx-window-keydown={JS.exec("data-cancel", to: "##{@id}")}
               phx-key="escape"
               phx-click-away={JS.exec("data-cancel", to: "##{@id}")}
-              class="shadow-zinc-700/10 ring-zinc-700/10 relative hidden rounded-2xl bg-white p-8 shadow-lg ring-1 transition"
+              class="shadow-zinc-700/10 ring-zinc-700/10 dark:shadow-zinc-10/10 dark:ring-zinc-10/10 relative hidden rounded-2xl bg-white dark:bg-gray-800 p-8 shadow-lg ring-1 transition"
             >
               <div class="absolute top-6 right-5">
                 <button
@@ -272,7 +276,7 @@ defmodule PivoWeb.CoreComponents do
   def simple_form(assigns) do
     ~H"""
     <.form :let={f} for={@for} as={@as} {@rest}>
-      <div class="mt-10 space-y-8 bg-white">
+      <div class="mt-10 space-y-8">
         {render_slot(@inner_block, f)}
         <div :for={action <- @actions} class="mt-2 flex items-center justify-between gap-6">
           {render_slot(action, f)}
@@ -302,7 +306,7 @@ defmodule PivoWeb.CoreComponents do
       type={@type}
       class={[
         "phx-submit-loading:opacity-75 rounded-lg bg-white py-2 px-3",
-        "text-sm font-semibold leading-6 text-zinc-700 active:text-zinc-700/80 border-zinc-700 border",
+        "dark:bg-gray-800 dark:border-zinc-100 text-sm font-semibold leading-6 opacity-80 active:text-zinc-700/80 border-zinc-700 border",
         @class
       ]}
       {@rest}
@@ -403,7 +407,7 @@ defmodule PivoWeb.CoreComponents do
       <select
         id={@id}
         name={@name}
-        class="mt-2 block w-full rounded-md border border-gray-300 bg-white shadow-sm focus:border-zinc-400 focus:ring-0 sm:text-sm"
+        class="mt-2 block w-full opacity-70 rounded-md border border-gray-300 bg-white dark:bg-gray-800 shadow-sm focus:border-zinc-400 focus:ring-0 sm:text-sm"
         multiple={@multiple}
         {@rest}
       >
@@ -423,7 +427,7 @@ defmodule PivoWeb.CoreComponents do
         id={@id}
         name={@name}
         class={[
-          "mt-2 block w-full rounded-lg text-zinc-900 focus:ring-0 sm:text-sm sm:leading-6 min-h-[6rem]",
+          "mt-2 block dark:bg-gray-800 w-full rounded-lg opacity-90 focus:ring-0 sm:text-sm sm:leading-6 min-h-[6rem]",
           @errors == [] && "border-zinc-300 focus:border-zinc-400",
           @errors != [] && "border-rose-400 focus:border-rose-400"
         ]}
@@ -445,7 +449,7 @@ defmodule PivoWeb.CoreComponents do
         id={@id}
         value={Phoenix.HTML.Form.normalize_value(@type, @value)}
         class={[
-          "mt-2 block w-full rounded-lg text-zinc-900 focus:ring-0 sm:text-sm sm:leading-6",
+          "mt-2 block w-full rounded-lg opacity-90 dark:bg-gray-800 focus:ring-0 sm:text-sm sm:leading-6",
           @errors == [] && "border-zinc-300 focus:border-zinc-400",
           @errors != [] && "border-rose-400 focus:border-rose-400"
         ]}

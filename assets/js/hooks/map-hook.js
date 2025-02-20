@@ -44,8 +44,8 @@ const MapHook = {
       el.classList.add(`${location.vino ? 'border-green-500' : 'border-red-500'}`);
 
       const html = `<div>
-        <h1 class="font-semibold pb-1">${location.name}</h1>
-        <div class="flex items-center gap-x-1">
+        <h1 class="text-zinc-800 font-semibold pb-1">${location.name}</h1>
+        <div class="flex items-center gap-x-1 text-zinc-700">
           <img src="/images/${location.vino ? 'beer.png' : 'no_beer.png'}" class="w-4 h-4 object-cover" />
           <p>${location.style}</p>
         </div>

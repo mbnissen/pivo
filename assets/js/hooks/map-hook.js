@@ -39,9 +39,23 @@ const MapHook = {
 
     for (const location of locations) {
       const el = document.createElement('div');
-      el.className = `bg-cover rounded-full w-10 h-10 border-2`;
+      el.className = `bg-cover rounded-full w-10 h-10`;
       el.style.backgroundImage = `url(/images/${location.logo})`;
-      el.classList.add(`${location.vino ? 'border-green-500' : 'border-red-500'}`);
+
+
+
+      const div = document.createElement('div');
+      div.className = 'absolute -inset-2 flex items-center justify-center opacity-80';
+      const span = document.createElement('div');
+      span.className = 'hero-no-symbol text-red-500 w-14 h-14';
+      div.appendChild(span);
+
+      if (!location.vino) {
+        el.appendChild(div);
+      } else {
+        el.classList.add('border-2');
+        el.classList.add('border-green-600');
+      }
 
       const html = `<div>
         <h1 class="text-zinc-800 font-semibold pb-1">${location.name}</h1>
@@ -51,6 +65,11 @@ const MapHook = {
         </div>
         <div class="flex text-zinc-500 text-xs pt-2">
           Latest report: ${location.latest_update} 
+        </div>
+        <div class="flex text-orange-700 text-xs pt-3 justify-end">
+          <a href="/beer_status/new">
+            <span>Report Vino</span>
+          </a>
         </div>
       </div>`;
 

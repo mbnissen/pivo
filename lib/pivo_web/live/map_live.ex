@@ -33,6 +33,7 @@ defmodule PivoWeb.MapLive do
           end
 
         %{
+          id: beer_shop.id,
           name: beer_shop.name,
           lat: beer_shop.lat,
           lng: beer_shop.lng,

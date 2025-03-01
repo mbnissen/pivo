@@ -64,7 +64,7 @@ const MapHook = {
           Latest report: ${location.latest_update} 
         </div>
         <div class="flex text-orange-700 text-xs pt-3 justify-end">
-          <a href="/beer_status/new">
+          <a href='/beer_status/new?beer_shop_id=${location.id}'>
             <span>Report Vino</span>
           </a>
         </div>

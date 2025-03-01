@@ -18,7 +18,10 @@ defmodule PivoWeb.BeerStatusLive.Index do
 
   @impl true
   def handle_params(params, _url, socket) do
-    {:noreply, apply_action(socket, socket.assigns.live_action, params)}
+    {:noreply,
+     socket
+     |> apply_action(socket.assigns.live_action, params)
+     |> assign(:beer_shop_id, params["beer_shop_id"])}
   end
 
   defp apply_action(socket, :new, _params) do
@@ -84,6 +87,7 @@ defmodule PivoWeb.BeerStatusLive.Index do
           title={@page_title}
           action={@live_action}
           beer_status={@beer_status}
+          beer_shop_id={@beer_shop_id}
           patch={~p"/beer_status"}
         />
       </.modal>

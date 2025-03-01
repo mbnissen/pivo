@@ -42,20 +42,17 @@ const MapHook = {
       el.className = `bg-cover rounded-full w-10 h-10`;
       el.style.backgroundImage = `url(/images/${location.logo})`;
 
-
-
       const div = document.createElement('div');
       div.className = 'absolute -inset-2 flex items-center justify-center opacity-80';
       const span = document.createElement('div');
-      span.className = 'hero-no-symbol text-red-500 w-14 h-14';
       div.appendChild(span);
-
-      if (!location.vino) {
-        el.appendChild(div);
+      if (location.vino) {
+        span.className = 'hero-check-circle text-green-500 w-14 h-14';
       } else {
-        el.classList.add('border-2');
-        el.classList.add('border-green-600');
+        span.className = 'hero-no-symbol text-red-500 w-14 h-14';
       }
+
+      el.appendChild(div);
 
       const html = `<div>
         <h1 class="text-zinc-800 font-semibold pb-1">${location.name}</h1>

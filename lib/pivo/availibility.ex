@@ -83,6 +83,14 @@ defmodule Pivo.Availibility do
         lat: 55.678297274206976,
         lng: 12.54701247420993,
         style: "Can"
+      },
+      %{
+        id: "b9f9376d-fe7b-4865-a131-bf286c8f915c",
+        name: "Vinspecialisten Toft Vin",
+        logo: "toft_vin_logo.jpg",
+        lat: 55.66664572063112,
+        lng: 12.576797797804993,
+        style: "Can"
       }
     ]
   end

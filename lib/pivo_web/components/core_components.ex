@@ -140,7 +140,7 @@ defmodule PivoWeb.CoreComponents do
               phx-window-keydown={JS.exec("data-cancel", to: "##{@id}")}
               phx-key="escape"
               phx-click-away={JS.exec("data-cancel", to: "##{@id}")}
-              class="shadow-zinc-700/10 ring-zinc-700/10 dark:shadow-zinc-10/10 dark:ring-zinc-10/10 relative hidden rounded-2xl bg-white dark:bg-gray-800 p-8 shadow-lg ring-1 transition"
+              class="border dark:border-zinc-500 shadow-zinc-700/10 ring-zinc-700/10 dark:shadow-zinc-10/10 dark:ring-zinc-10/10 relative hidden rounded-2xl bg-white dark:bg-gray-800 p-8 shadow-lg ring-1 transition"
             >
               <div class="absolute top-6 right-5">
                 <button
@@ -501,7 +501,7 @@ defmodule PivoWeb.CoreComponents do
     ~H"""
     <header class={[@actions != [] && "flex items-center justify-between gap-6", @class]}>
       <div>
-        <h1 class="text-lg font-semibold leading-8 text-zinc-800">
+        <h1 class="text-lg font-semibold leading-8 opacity-80">
           {render_slot(@inner_block)}
         </h1>
         <p :if={@subtitle != []} class="mt-2 text-sm leading-6 text-zinc-600">

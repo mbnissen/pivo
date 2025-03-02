@@ -86,7 +86,7 @@ defmodule PivoWeb.BeerStatusLive.FormComponent do
             />
             <label
               for="vino-available"
-              class="dark:bg-gray-800 inline-flex items-center justify-between w-full px-3 py-2 opacity-50 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked-text-zinc-700 peer-checked:border-green-600 border-2"
+              class="dark:bg-gray-800 inline-flex items-center justify-between w-full px-3 py-2 opacity-80 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked-text-zinc-700 peer-checked:border-green-400 border-2"
             >
               <div class="w-full text-sm">In stock</div>
               <img src={~p"/images/beer.png"} width="24" />
@@ -103,7 +103,7 @@ defmodule PivoWeb.BeerStatusLive.FormComponent do
             />
             <label
               for="vino-not-available"
-              class="dark:bg-gray-800 inline-flex items-center justify-between w-full px-3 py-2 opacity-50 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked-text-zinc-700 peer-checked:border-red-600 border-2"
+              class="dark:bg-gray-800 inline-flex items-center justify-between w-full px-3 py-2 opacity-80 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked-text-zinc-700 peer-checked:border-red-400 border-2"
             >
               <div class="w-full text-sm">Out of stock</div>
               <img src={~p"/images/no_beer.png"} width="24" />

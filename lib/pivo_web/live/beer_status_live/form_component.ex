@@ -70,7 +70,6 @@ defmodule PivoWeb.BeerStatusLive.FormComponent do
         <.input
           field={@form[:beer_shop_id]}
           type="select"
-          value={@beer_shop_id}
           options={@beer_shops |> Enum.map(&{&1.name, &1.id})}
         />
         <ul class="grid w-full gap-2 grid-cols-2">

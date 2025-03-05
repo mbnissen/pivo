@@ -130,6 +130,12 @@ defmodule Pivo.Availibility do
     |> Repo.insert()
   end
 
+  def create_beer_status!(attrs \\ %{}) do
+    %BeerStatus{}
+    |> BeerStatus.changeset(attrs)
+    |> Repo.insert!()
+  end
+
   @doc """
   Returns an `%Ecto.Changeset{}` for tracking beer_status changes.
 

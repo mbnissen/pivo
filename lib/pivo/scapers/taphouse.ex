@@ -5,7 +5,14 @@ defmodule Pivo.Scrapers.Taphouse do
   def get_vino_status do
     case fetch_beer_list() do
       {:ok, beer_list} ->
-        {:ok, Enum.find(beer_list, &(Map.get(&1, :title) === "Vinohradská 11 U"))}
+        case Enum.find(beer_list, &(Map.get(&1, :title) === "Vinohradská 11")) do
+          nil ->
+            replacement = Enum.find(beer_list, &(Map.get(&1, :number) === "23"))
+            {:ok, %{vino: nil, replacement: replacement}}
+
+          vino ->
+            {:ok, %{vino: vino}}
+        end
 
       {:error, reason} ->
         {:error, reason}
@@ -43,7 +50,7 @@ defmodule Pivo.Scrapers.Taphouse do
         %{
           number: get_column_text(beer, 1),
           brewery: get_column_text(beer, 2),
-          title: title,
+          title: String.slice(title, 0..-3//1),
           style: get_column_text(beer, 4),
           country: get_column_text(beer, 5),
           abv: get_column_text(beer, 6),

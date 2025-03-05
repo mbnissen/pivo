@@ -72,4 +72,6 @@ config :tailwind,
     cd: Path.expand("../assets", __DIR__)
   ]
 
+config :timex, default_timezone: "Europe/Copenhagen"
+
 import_config "#{config_env()}.exs"

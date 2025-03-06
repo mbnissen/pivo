@@ -24,7 +24,6 @@ defmodule Pivo.BeerScraper do
     # Schedule first scrape immediately
     send(self(), :scrape)
 
-    # Schedule periodic scraping every hour
     schedule_next_scrape()
 
     {:ok, %{beer_list: []}}
@@ -34,9 +33,6 @@ defmodule Pivo.BeerScraper do
   def handle_info(:scrape, state) do
     # Perform the scraping
     scrape_vino_status()
-
-    # Schedule next scrape
-    schedule_next_scrape()
 
     # Update state with new beer list
     {:noreply, state}

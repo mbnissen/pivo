@@ -45,6 +45,21 @@ defmodule Pivo.BeerScraper do
   # Private helper functions
   defp scrape_vino_status do
     case Taphouse.get_vino_status() do
+      {:ok, %{vino: nil, replacement: nil}} ->
+        Logger.info("Vino not found and no replacement")
+
+        case Availibility.get_latest_beer_status_by_shop_id(@taphouse_id) do
+          %{is_available: true} ->
+            Availibility.create_beer_status!(%{
+              beer_shop_id: @taphouse_id,
+              username: "Pivotomated",
+              is_available: false
+            })
+
+          _ ->
+            Logger.info("Vino is not available - no need to update")
+        end
+
       {:ok, %{vino: nil, replacement: replacement}} ->
         Logger.info("Vino not found")
 

@@ -10,8 +10,8 @@ defmodule Pivo.BeerScraper do
   @taphouse_id "5b37fbb7-d03b-4536-b8dc-34ee9b3e7fc3"
 
   # Client API
-  def start_link(opts \\ []) do
-    GenServer.start_link(__MODULE__, opts, name: __MODULE__)
+  def start(opts \\ []) do
+    GenServer.start(__MODULE__, opts, name: __MODULE__)
   end
 
   def get_current_beer_list do
@@ -110,25 +110,5 @@ defmodule Pivo.BeerScraper do
   defp schedule_next_scrape do
     # Schedule next scrape in 5 minutes
     Process.send_after(self(), :scrape, 5 * 60 * 1000)
-  end
-end
-
-# Supervisor to manage the GenServer
-defmodule BeerScraperSupervisor do
-  @moduledoc false
-  use Supervisor
-
-  def start_link(init_arg) do
-    Supervisor.start_link(__MODULE__, init_arg, name: __MODULE__)
-  end
-
-  @impl true
-  def init(_init_arg) do
-    children = [
-      # WebScraper GenServer
-      BeerScraper
-    ]
-
-    Supervisor.init(children, strategy: :one_for_one)
   end
 end

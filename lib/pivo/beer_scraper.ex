@@ -72,6 +72,14 @@ defmodule Pivo.BeerScraper do
               is_available: false
             })
 
+          %{is_available: false, comment: nil} ->
+            Availibility.create_beer_status!(%{
+              beer_shop_id: @taphouse_id,
+              username: "Pivotomated",
+              comment: "Replaced by #{replacement.title} - #{replacement.brewery}",
+              is_available: false
+            })
+
           _ ->
             Logger.info("Vino is not available - no need to update")
         end
@@ -100,8 +108,8 @@ defmodule Pivo.BeerScraper do
   end
 
   defp schedule_next_scrape do
-    # Schedule next scrape in 1 hour
-    Process.send_after(self(), :scrape, 60 * 60 * 1000)
+    # Schedule next scrape in 5 minutes
+    Process.send_after(self(), :scrape, 5 * 60 * 1000)
   end
 end
 

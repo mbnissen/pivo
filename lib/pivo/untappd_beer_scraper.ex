@@ -18,7 +18,6 @@ defmodule Pivo.UntappdBeerScraper do
   @impl true
   def init(opts) do
     send(self(), :update)
-    schedule_next_update()
     {:ok, opts}
   end
 

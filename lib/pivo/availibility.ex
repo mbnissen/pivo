@@ -158,6 +158,16 @@ defmodule Pivo.Availibility do
           is_available: false
         })
 
+      %BeerStatus{is_available: false, comment: nil} ->
+        :ok
+
+      %BeerStatus{is_available: false, comment: _} ->
+        create_beer_status!(%{
+          beer_shop_id: beer_shop_id,
+          username: "Pivotomated",
+          is_available: false
+        })
+
       _ ->
         :ok
     end

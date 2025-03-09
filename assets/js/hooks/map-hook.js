@@ -55,13 +55,15 @@ const MapHook = {
       el.appendChild(div);
 
       const html = `<div>
-        <h1 class="text-zinc-800 font-semibold pb-1">${location.name}</h1>
-        <div class="flex items-center gap-x-1 text-zinc-700">
+        <div class="inline-flex pb-1 gap-1 items-center">
           <img src="/images/${location.vino ? 'beer.png' : 'no_beer.png'}" class="w-4 h-4 object-cover" />
-          <p>${location.style}</p>
+          <h1 class="text-zinc-800 font-semibold">${location.name}</h1>
+        </div>
+        <div class="flex items-center gap-x-1 text-zinc-700">
+          <p>${location.latest_update_comment}</p>
         </div>
         <div class="flex text-zinc-500 text-xs pt-2">
-          Latest report: ${location.latest_update} 
+          ${location.latest_update} 
         </div>
         <div class="flex text-orange-700 text-xs pt-3 justify-end">
           <a href='/beer_status/new?beer_shop_id=${location.id}'>

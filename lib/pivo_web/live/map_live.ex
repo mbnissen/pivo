@@ -41,7 +41,7 @@ defmodule PivoWeb.MapLive do
           logo: beer_shop.logo,
           vino: Map.get(latest_status || %{}, :is_available, false),
           latest_update: latest_update,
-          latest_update_by: Map.get(latest_status || %{}, :username, nil)
+          latest_update_comment: Map.get(latest_status || %{}, :comment, "")
         }
       end)
 

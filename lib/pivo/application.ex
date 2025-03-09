@@ -23,8 +23,30 @@ defmodule Pivo.Application do
       PivoWeb.Endpoint
     ]
 
-    # Start the beer scraper without linking
+    # Start the beer scrapers without linking
     {:ok, _pid} = Pivo.BeerScraper.start()
+
+    {:ok, _pid} =
+      Pivo.UntappdBeerScraper.start(
+        name: "Peders",
+        beer_shop_id: "afec5c50-637f-487d-a03f-e780ac1712c9",
+        vino_tap_number: "30",
+        url: "https://untappd.com/v/peders/5696141"
+      )
+
+    {:ok, _pid} =
+      Pivo.UntappdBeerScraper.start(
+        name: "Bar Godt",
+        beer_shop_id: "13a153e5-f435-4d2f-a819-d3a36e0417b5",
+        url: "https://untappd.com/v/bar-godt/12187591"
+      )
+
+    {:ok, _pid} =
+      Pivo.UntappdBeerScraper.start(
+        name: "Godt Øl",
+        beer_shop_id: "7d27d9bb-7a8c-4862-bee6-49eeb4d4a4e0",
+        url: "https://untappd.com/v/godt-ol/7324555"
+      )
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options

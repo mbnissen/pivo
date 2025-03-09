@@ -148,4 +148,64 @@ defmodule Pivo.Availibility do
   def change_beer_status(%BeerStatus{} = beer_status, attrs \\ %{}) do
     BeerStatus.changeset(beer_status, attrs)
   end
+
+  def update_beer_status(beer_shop_id, vino, nil) do
+    case get_latest_beer_status_by_shop_id(beer_shop_id) do
+      %BeerStatus{is_available: true} ->
+        :ok
+
+      _ ->
+        create_beer_status!(%{
+          beer_shop_id: beer_shop_id,
+          username: "Pivotomated",
+          is_available: true,
+          comment: "#{vino.number && "Tap ##{vino.number}"}"
+        })
+    end
+  end
+
+  def update_beer_status(beer_shop_id, nil, nil) do
+    case get_latest_beer_status_by_shop_id(beer_shop_id) do
+      %BeerStatus{is_available: true} ->
+        create_beer_status!(%{
+          beer_shop_id: beer_shop_id,
+          username: "Pivotomated",
+          is_available: false
+        })
+
+      _ ->
+        :ok
+    end
+  end
+
+  def update_beer_status(beer_shop_id, nil, replacement) do
+    case get_latest_beer_status_by_shop_id(beer_shop_id) do
+      %BeerStatus{is_available: true} ->
+        create_beer_status!(%{
+          beer_shop_id: beer_shop_id,
+          username: "Pivotomated",
+          comment: "Replaced by #{replacement.name} - #{replacement.brewery}",
+          is_available: false
+        })
+
+      %BeerStatus{is_available: false, comment: nil} ->
+        create_beer_status!(%{
+          beer_shop_id: beer_shop_id,
+          username: "Pivotomated",
+          comment: "Replaced by #{replacement.name} - #{replacement.brewery}",
+          is_available: false
+        })
+
+      nil ->
+        create_beer_status!(%{
+          beer_shop_id: beer_shop_id,
+          username: "Pivotomated",
+          comment: "Replaced by #{replacement.name} - #{replacement.brewery}",
+          is_available: false
+        })
+
+      _ ->
+        :ok
+    end
+  end
 end

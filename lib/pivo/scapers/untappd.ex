@@ -1,7 +1,7 @@
 defmodule Pivo.Scrapers.Untappd do
   @moduledoc false
 
-  def get_vino_status(url, vino_tap_number) do
+  def get_vino_status(url, vino_tap_number, nil) do
     case fetch_beer_list(url) do
       {:ok, beer_list} ->
         case Enum.find(beer_list, &(Map.get(&1, :name) === "Vinohradská 11")) do
@@ -15,6 +15,22 @@ defmodule Pivo.Scrapers.Untappd do
 
       {:error, reason} ->
         {:error, reason}
+    end
+  end
+
+  def get_vino_status(url, vino_tap_number, can_url) do
+    with {:ok, tap_list} <- fetch_beer_list(url),
+         {:ok, can_list} <- fetch_beer_list(can_url) do
+      case Enum.find(tap_list, &(Map.get(&1, :name) === "Vinohradská 11")) do
+        nil ->
+          replacement = Enum.find(tap_list, &(Map.get(&1, :number) === vino_tap_number))
+          can_vino = Enum.find(can_list, &(Map.get(&1, :name) === "Vinohradská 11"))
+
+          {:ok, %{vino: can_vino, replacement: replacement}}
+
+        vino ->
+          {:ok, %{vino: vino, replacement: nil}}
+      end
     end
   end
 

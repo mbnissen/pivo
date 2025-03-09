@@ -208,4 +208,19 @@ defmodule Pivo.Availibility do
         :ok
     end
   end
+
+  def update_beer_status(beer_shop_id, _vino, replacement) do
+    case get_latest_beer_status_by_shop_id(beer_shop_id) do
+      %BeerStatus{is_available: true} ->
+        :ok
+
+      _ ->
+        create_beer_status!(%{
+          beer_shop_id: beer_shop_id,
+          username: "Pivotomated",
+          is_available: true,
+          comment: "Replaced by #{replacement.name} - #{replacement.brewery}, but available in cans"
+        })
+    end
+  end
 end

@@ -31,7 +31,8 @@ defmodule Pivo.Application do
         name: "Peders",
         beer_shop_id: "afec5c50-637f-487d-a03f-e780ac1712c9",
         vino_tap_number: "30",
-        url: "https://untappd.com/v/peders/5696141"
+        url: "https://untappd.com/v/peders/5696141",
+        can_url: "https://untappd.com/v/peders/5696141?menu_id=95260"
       )
 
     {:ok, _pid} =

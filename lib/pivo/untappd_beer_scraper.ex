@@ -37,12 +37,12 @@ defmodule Pivo.UntappdBeerScraper do
     name = Keyword.get(state, :name)
     beer_shop_id = Keyword.get(state, :beer_shop_id)
     url = Keyword.get(state, :url)
+    can_url = Keyword.get(state, :can_url, nil)
     vino_tap_number = Keyword.get(state, :vino_tap_number)
 
-    case Untappd.get_vino_status(url, vino_tap_number) do
+    case Untappd.get_vino_status(url, vino_tap_number, can_url) do
       {:ok, %{vino: vino, replacement: replacement}} ->
         Logger.info("Vino status for #{name}: #{inspect(vino)} - Replacement: #{inspect(replacement)}")
-
         Availibility.update_beer_status(beer_shop_id, vino, replacement)
 
       {:error, reason} ->

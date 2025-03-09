@@ -149,6 +149,21 @@ defmodule Pivo.Availibility do
     BeerStatus.changeset(beer_status, attrs)
   end
 
+  def update_beer_status(beer_shop_id, %{number: nil}, nil) do
+    case get_latest_beer_status_by_shop_id(beer_shop_id) do
+      %BeerStatus{is_available: true} ->
+        :ok
+
+      _ ->
+        create_beer_status!(%{
+          beer_shop_id: beer_shop_id,
+          username: "Pivotomated",
+          is_available: true,
+          comment: "Available in cans"
+        })
+    end
+  end
+
   def update_beer_status(beer_shop_id, vino, nil) do
     case get_latest_beer_status_by_shop_id(beer_shop_id) do
       %BeerStatus{is_available: true} ->
@@ -159,7 +174,7 @@ defmodule Pivo.Availibility do
           beer_shop_id: beer_shop_id,
           username: "Pivotomated",
           is_available: true,
-          comment: "#{vino.number && "Tap ##{vino.number}"}"
+          comment: "Tap ##{vino.number}"
         })
     end
   end

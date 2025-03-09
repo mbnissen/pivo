@@ -49,6 +49,20 @@ defmodule Pivo.Application do
         url: "https://untappd.com/v/godt-ol/7324555"
       )
 
+    {:ok, _pid} =
+      Pivo.UntappdBeerScraper.start(
+        name: "Rallys",
+        beer_shop_id: "e65fc1d3-035d-4c62-9915-cd3a5fcf7196",
+        url: "https://untappd.com/v/rallys-cafe/5595380?menu_id=206962"
+      )
+
+    {:ok, _pid} =
+      Pivo.UntappdBeerScraper.start(
+        name: "Kihoskh",
+        beer_shop_id: "a4edf6d8-1fc7-49da-a687-65fc3d151069",
+        url: "https://untappd.com/v/kihoskh/85204"
+      )
+
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: Pivo.Supervisor]

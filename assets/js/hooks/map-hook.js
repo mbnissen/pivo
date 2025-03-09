@@ -60,7 +60,7 @@ const MapHook = {
           <h1 class="text-zinc-800 font-semibold">${location.name}</h1>
         </div>
         <div class="flex items-center gap-x-1 text-zinc-700">
-          <p>${location.latest_update_comment}</p>
+          <p>${location.latest_update_comment ?? ""}</p>
         </div>
         <div class="flex text-zinc-500 text-xs pt-2">
           ${location.latest_update} 

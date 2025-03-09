@@ -9,7 +9,7 @@ defmodule Pivo.BeerScraper do
 
   @taphouse_id "5b37fbb7-d03b-4536-b8dc-34ee9b3e7fc3"
   # 5 minutes
-  @interval 5_000
+  @interval 300_000
 
   def start(opts \\ []) do
     GenServer.start(__MODULE__, opts, name: __MODULE__)

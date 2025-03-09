@@ -1,6 +1,22 @@
 defmodule Pivo.Scrapers.Untappd do
   @moduledoc false
 
+  def get_vino_status(url, nil, nil) do
+    case fetch_beer_list(url) do
+      {:ok, beer_list} ->
+        case Enum.find(beer_list, &(Map.get(&1, :name) === "Vinohradská 11")) do
+          nil ->
+            {:ok, %{vino: nil, replacement: nil}}
+
+          vino ->
+            {:ok, %{vino: vino, replacement: nil}}
+        end
+
+      {:error, reason} ->
+        {:error, reason}
+    end
+  end
+
   def get_vino_status(url, vino_tap_number, nil) do
     case fetch_beer_list(url) do
       {:ok, beer_list} ->

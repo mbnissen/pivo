@@ -8,7 +8,7 @@ defmodule Pivo.UntappdBeerScraper do
   require Logger
 
   # 5 minutes
-  @interval 300_000
+  @interval 5_000
 
   def start(opts) do
     GenServer.start(__MODULE__, opts, name: {:global, opts[:name]})

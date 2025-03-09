@@ -150,102 +150,83 @@ defmodule Pivo.Availibility do
   end
 
   def update_beer_status(beer_shop_id, nil, nil) do
-    case get_latest_beer_status_by_shop_id(beer_shop_id) do
-      %BeerStatus{is_available: true} ->
-        create_beer_status!(%{
-          beer_shop_id: beer_shop_id,
-          username: "Pivotomated",
-          is_available: false
-        })
+    latest_status = get_latest_beer_status_by_shop_id(beer_shop_id)
 
-      %BeerStatus{is_available: false, comment: nil} ->
-        :ok
-
-      %BeerStatus{is_available: false, comment: _} ->
-        create_beer_status!(%{
-          beer_shop_id: beer_shop_id,
-          username: "Pivotomated",
-          is_available: false
-        })
-
-      _ ->
-        :ok
+    if latest_status.is_available || (!latest_status.is_available && latest_status.comment) do
+      create_new_unavailable_status(beer_shop_id, nil)
+    else
+      :ok
     end
   end
 
   def update_beer_status(beer_shop_id, %{number: nil}, nil) do
+    comment = "Available in cans"
+
     case get_latest_beer_status_by_shop_id(beer_shop_id) do
       %BeerStatus{is_available: true} ->
         :ok
 
       _ ->
-        create_beer_status!(%{
-          beer_shop_id: beer_shop_id,
-          username: "Pivotomated",
-          is_available: true,
-          comment: "Available in cans"
-        })
+        create_new_available_status(beer_shop_id, comment)
     end
   end
 
   def update_beer_status(beer_shop_id, vino, nil) do
+    comment = "Tap ##{vino.number}"
+
     case get_latest_beer_status_by_shop_id(beer_shop_id) do
       %BeerStatus{is_available: true} ->
         :ok
 
       _ ->
-        create_beer_status!(%{
-          beer_shop_id: beer_shop_id,
-          username: "Pivotomated",
-          is_available: true,
-          comment: "Tap ##{vino.number}"
-        })
+        create_new_available_status(beer_shop_id, comment)
     end
   end
 
   def update_beer_status(beer_shop_id, nil, replacement) do
-    case get_latest_beer_status_by_shop_id(beer_shop_id) do
-      %BeerStatus{is_available: true} ->
-        create_beer_status!(%{
-          beer_shop_id: beer_shop_id,
-          username: "Pivotomated",
-          comment: "Replaced by #{replacement.name} - #{replacement.brewery}",
-          is_available: false
-        })
+    comment = "Replaced by #{replacement.name} - #{replacement.brewery}"
+    latest_status = get_latest_beer_status_by_shop_id(beer_shop_id)
 
-      %BeerStatus{is_available: false, comment: nil} ->
-        create_beer_status!(%{
-          beer_shop_id: beer_shop_id,
-          username: "Pivotomated",
-          comment: "Replaced by #{replacement.name} - #{replacement.brewery}",
-          is_available: false
-        })
+    cond do
+      is_nil(latest_status) || latest_status.is_available ->
+        create_new_unavailable_status(beer_shop_id, comment)
 
-      nil ->
-        create_beer_status!(%{
-          beer_shop_id: beer_shop_id,
-          username: "Pivotomated",
-          comment: "Replaced by #{replacement.name} - #{replacement.brewery}",
-          is_available: false
-        })
+      !latest_status.is_available && latest_status.comment != comment ->
+        create_new_unavailable_status(beer_shop_id, comment)
 
-      _ ->
+      # Default case
+      true ->
         :ok
     end
   end
 
   def update_beer_status(beer_shop_id, _vino, replacement) do
+    comment = "Replaced by #{replacement.name} - #{replacement.brewery}, but available in cans"
+
     case get_latest_beer_status_by_shop_id(beer_shop_id) do
       %BeerStatus{is_available: true} ->
         :ok
 
       _ ->
-        create_beer_status!(%{
-          beer_shop_id: beer_shop_id,
-          username: "Pivotomated",
-          is_available: true,
-          comment: "Replaced by #{replacement.name} - #{replacement.brewery}, but available in cans"
-        })
+        create_new_available_status(beer_shop_id, comment)
     end
+  end
+
+  defp create_new_available_status(beer_shop_id, comment) do
+    create_beer_status!(%{
+      beer_shop_id: beer_shop_id,
+      username: "Pivotomated",
+      comment: comment,
+      is_available: true
+    })
+  end
+
+  defp create_new_unavailable_status(beer_shop_id, comment) do
+    create_beer_status!(%{
+      beer_shop_id: beer_shop_id,
+      username: "Pivotomated",
+      comment: comment,
+      is_available: false
+    })
   end
 end

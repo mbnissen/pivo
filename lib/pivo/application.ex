@@ -56,12 +56,12 @@ defmodule Pivo.Application do
         url: "https://untappd.com/v/rallys-cafe/5595380?menu_id=206962"
       )
 
-    {:ok, _pid} =
-      Pivo.UntappdBeerScraper.start(
-        name: "Kihoskh",
-        beer_shop_id: "a4edf6d8-1fc7-49da-a687-65fc3d151069",
-        url: "https://untappd.com/v/kihoskh/85204"
-      )
+    #{:ok, _pid} =
+    #  Pivo.UntappdBeerScraper.start(
+    #    name: "Kihoskh",
+    #    beer_shop_id: "a4edf6d8-1fc7-49da-a687-65fc3d151069",
+    #    url: "https://untappd.com/v/kihoskh/85204"
+    #  )
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options

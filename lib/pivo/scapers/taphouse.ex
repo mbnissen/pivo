@@ -45,7 +45,7 @@ defmodule Pivo.Scrapers.Taphouse do
         %{
           number: get_column_text(beer, 1),
           brewery: beer |> get_column_text(2) |> String.trim(),
-          name: name |> String.slice(1..-3//1) |> String.trim(),
+          name: name |> String.slice(0..-2//1) |> String.trim(),
           style: get_column_text(beer, 4),
           country: get_column_text(beer, 5),
           abv: get_column_text(beer, 6),

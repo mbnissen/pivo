@@ -30,7 +30,7 @@ defmodule Pivo.Application do
       Pivo.UntappdBeerScraper.start(
         name: "Peders",
         beer_shop_id: "afec5c50-637f-487d-a03f-e780ac1712c9",
-        vino_tap_number: "30",
+        vino_tap_number: "5",
         url: "https://untappd.com/v/peders/5696141",
         can_url: "https://untappd.com/v/peders/5696141?menu_id=95260"
       )
@@ -56,7 +56,7 @@ defmodule Pivo.Application do
         url: "https://untappd.com/v/rallys-cafe/5595380?menu_id=206962"
       )
 
-    #{:ok, _pid} =
+    # {:ok, _pid} =
     #  Pivo.UntappdBeerScraper.start(
     #    name: "Kihoskh",
     #    beer_shop_id: "a4edf6d8-1fc7-49da-a687-65fc3d151069",

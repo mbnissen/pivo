@@ -32,6 +32,7 @@ defmodule Pivo.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:igniter, "~> 0.6", only: [:dev, :test]},
       {:req, "~> 0.5.0"},
       {:floki, "~> 0.36.0"},
       {:phoenix_analytics, git: "https://github.com/mbnissen/PhoenixAnalytics", branch: "master"},

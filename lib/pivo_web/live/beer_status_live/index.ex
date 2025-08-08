@@ -41,7 +41,7 @@ defmodule PivoWeb.BeerStatusLive.Index do
   @impl true
   def render(assigns) do
     ~H"""
-    <div class="px-4 max-w-lg mx-auto">
+    <Layouts.app flash={@flash}>
       <div id="beer_status" phx-update="stream">
         <div
           :for={{dom_id, beer_status} <- @streams.beer_status_collection}
@@ -87,7 +87,7 @@ defmodule PivoWeb.BeerStatusLive.Index do
           patch={~p"/beer_status"}
         />
       </.modal>
-    </div>
+    </Layouts.app>
     """
   end
 end

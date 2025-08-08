@@ -90,9 +90,12 @@ defmodule PivoWeb do
       import Phoenix.HTML
       # Core UI components
       import PivoWeb.CoreComponents
+      import PivoWeb.MyComponents
+
+      alias Phoenix.LiveView.JS
+      alias PivoWeb.Layouts
 
       # Shortcut for generating JS commands
-      alias Phoenix.LiveView.JS
 
       # Routes generation with the ~p sigil
       unquote(verified_routes())

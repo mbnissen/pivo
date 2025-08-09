@@ -13,6 +13,7 @@ config :phoenix, :stacktrace_depth, 20
 config :phoenix_live_view,
   # Include HEEx debug annotations as HTML comments in rendered markup
   debug_heex_annotations: true,
+  debug_attributes: true,
   # Enable helpful, but potentially expensive runtime checks
   enable_expensive_runtime_checks: true
 
@@ -51,8 +52,8 @@ config :pivo, PivoWeb.Endpoint,
   debug_errors: true,
   secret_key_base: "cFS+qtIUkwsuGF8tCmXrcxKd37AC+ZYgz5l7pd9CuXtIaViRdwK4MO3QWUmuZtlm",
   watchers: [
-    esbuild: {Esbuild, :install_and_run, [:pivo, ~w(--sourcemap=inline --watch)]},
-    tailwind: {Tailwind, :install_and_run, [:pivo, ~w(--watch)]}
+    pivo: {Esbuild, :install_and_run, [:pivo, ~w(--sourcemap=inline --watch)]},
+    pivo: {Tailwind, :install_and_run, [:pivo, ~w(--watch)]}
   ]
 
 # Watch static and templates for browser reloading.

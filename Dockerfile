@@ -51,6 +51,8 @@ COPY assets/package.json assets/package-lock.json ./assets/
 COPY priv priv
 
 COPY lib lib
+# Compile the release
+RUN mix compile
 
 COPY assets assets
 
@@ -58,8 +60,7 @@ COPY assets assets
 RUN npm install --prefix ./assets
 RUN mix assets.deploy
 
-# Compile the release
-RUN mix compile
+RUN mix assets.setup
 
 # Changes to config/runtime.exs don't require recompiling the code
 COPY config/runtime.exs config/

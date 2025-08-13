@@ -80,7 +80,7 @@ defmodule Pivo.MixProject do
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
       "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
-      "assets.build": ["tailwind pivo", "esbuild pivo"],
+      "assets.build": ["cmd --cd assets npm install", "tailwind pivo", "esbuild pivo"],
       "assets.deploy": [
         "tailwind pivo --minify",
         "esbuild pivo --minify",

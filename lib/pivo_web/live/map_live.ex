@@ -7,15 +7,17 @@ defmodule PivoWeb.MapLive do
   @impl true
   def render(assigns) do
     ~H"""
-    <div class="h-screen w-screen">
-      <div
-        id="map"
-        class="h-screen w-screen"
-        phx-hook="MapHook"
-        data-access-token={@access_token}
-        data-locations={Jason.encode!(@locations)}
-      />
-    </div>
+    <Layouts.app flash={@flash}>
+      <div class="h-screen w-screen">
+        <div
+          id="map"
+          class="h-screen w-screen"
+          phx-hook="MapHook"
+          data-access-token={@access_token}
+          data-locations={Jason.encode!(@locations)}
+        />
+      </div>
+    </Layouts.app>
     """
   end
 

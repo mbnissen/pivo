@@ -10,34 +10,36 @@ defmodule PivoWeb.AboutLive do
   @impl true
   def render(assigns) do
     ~H"""
-    <div class="min-h-screen bg-gray-100 dark:bg-gray-700 flex flex-col items-center p-4">
-      <div class="w-full max-w-lg sm:max-w-xl bg-white dark:bg-gray-800 opacity-70 shadow-lg rounded-2xl p-6 text-center">
-        <p class="text-lg mb-4">
-          This page is dedicated to our favorite beer: <span class="font-semibold">Vinohradská 11</span>! 🍺
-        </p>
-        <p class="text-lg mb-4">
-          If you're a fan of crisp, perfectly balanced lagers, you're in the right place.
-          We’re on a mission to help each other find where this legendary beer is available in Copenhagen. 🗺️✨
-        </p>
-        <p class="text-lg mb-8">
-          Whether you've spotted it in a cozy pub, a trendy bar, or a hidden gem, share your findings with the community.
-          Together, we make sure no one misses out on a great beer of Vinohradská 11! 🍻
-        </p>
-        <.link
-          href={~p"/"}
-          class="bg-yellow-500 text-white px-6 py-3 rounded-lg text-lg font-semibold shadow-md hover:bg-yellow-600 transition"
-        >
-          Find Vinohradská 11 🍺
-        </.link>
-        <p class="text-lg mt-8">
-          Have suggestions or want to reach out? Feel free to email me at
-          <a href="mailto:pivomorten@gmail.com" class="text-orange-500 font-semibold hover:underline">
-            pivomorten@gmail.com
-          </a>
-          📧
-        </p>
+    <Layouts.app flash={@flash}>
+      <div class="min-h-screen flex flex-col items-center p-4">
+        <div class="w-full text-lg max-w-lg sm:max-w-xl bg-base-300 text-base-content text-secondary-content shadow-lg rounded-2xl p-6 text-center">
+          <p class="text-base-content mb-4">
+            This page is dedicated to our favorite beer: <span class="font-semibold">Vinohradská 11</span>! 🍺
+          </p>
+          <p class="text-base-content mb-4">
+            If you're a fan of crisp, perfectly balanced lagers, you're in the right place.
+            We’re on a mission to help each other find where this legendary beer is available in Copenhagen. 🗺️✨
+          </p>
+          <p class="text-base-content mb-8">
+            Whether you've spotted it in a cozy pub, a trendy bar, or a hidden gem, share your findings with the community.
+            Together, we make sure no one misses out on a great beer of Vinohradská 11! 🍻
+          </p>
+          <.button navigate={~p"/"} class="btn-primary">
+            Find Vinohradská 11 🍺
+          </.button>
+          <p class="mt-8 text-base-content">
+            Have suggestions or want to reach out? Feel free to email me at
+            <a
+              href="mailto:pivomorten@gmail.com"
+              class="text-primary font-semibold hover:underline"
+            >
+              pivomorten@gmail.com
+            </a>
+            📧
+          </p>
+        </div>
       </div>
-    </div>
+    </Layouts.app>
     """
   end
 end

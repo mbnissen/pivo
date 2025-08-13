@@ -39,10 +39,7 @@ defmodule PivoWeb do
 
   def controller do
     quote do
-      use Phoenix.Controller,
-        formats: [:html, :json],
-        layouts: [html: PivoWeb.Layouts]
-
+      use Phoenix.Controller, formats: [:html, :json]
       use Gettext, backend: PivoWeb.Gettext
 
       import Plug.Conn
@@ -53,8 +50,7 @@ defmodule PivoWeb do
 
   def live_view do
     quote do
-      use Phoenix.LiveView,
-        layout: {PivoWeb.Layouts, :app}
+      use Phoenix.LiveView
 
       unquote(html_helpers())
     end

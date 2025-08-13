@@ -70,6 +70,7 @@ config :pivo, PivoWeb.Endpoint,
 # configured to run both http and https servers on
 config :pivo, PivoWeb.Endpoint,
   live_reload: [
+    web_console_logger: true,
     patterns: [
       ~r"priv/static/(?!uploads/).*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",

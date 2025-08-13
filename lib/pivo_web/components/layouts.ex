@@ -36,35 +36,62 @@ defmodule PivoWeb.Layouts do
 
   def app(assigns) do
     ~H"""
-    <header class="navbar px-4 sm:px-6 lg:px-8">
-      <div class="flex-1">
-        <a href="/" class="flex-1 flex w-fit items-center gap-2">
-          <img src={~p"/images/logo.svg"} width="36" />
-          <span class="text-sm font-semibold">v{Application.spec(:phoenix, :vsn)}</span>
-        </a>
+    <div class="navbar bg-base-100 shadow-sm border-b border-base-content">
+      <div class="navbar-start">
+        <.link navigate={~p"/"} class="flex items-center gap-2">
+          <img src={~p"/images/beer.png"} width="36" />
+          <p class="text-lg font-semibold">
+            WhereIsVino.dk
+          </p>
+        </.link>
       </div>
-      <div class="flex-none">
-        <ul class="flex flex-column px-1 space-x-4 items-center">
-          <li>
-            <a href="https://phoenixframework.org/" class="btn btn-ghost">Website</a>
-          </li>
-          <li>
-            <a href="https://github.com/phoenixframework/phoenix" class="btn btn-ghost">GitHub</a>
-          </li>
-          <li>
-            <.theme_toggle />
-          </li>
-          <li>
-            <a href="https://hexdocs.pm/phoenix/overview.html" class="btn btn-primary">
-              Get Started <span aria-hidden="true">&rarr;</span>
-            </a>
-          </li>
-        </ul>
+      <div class="navbar-end">
+        <div class="dropdown dropdown-end">
+          <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h7"
+              />
+            </svg>
+          </div>
+          <ul
+            tabindex="0"
+            class="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow gap-2"
+          >
+            <li>
+              <.link navigate={~p"/beer_status"}>
+                <.icon name="hero-queue-list" class="size-5 shrink-0" />
+                <span class="text-lg">Latest reports</span>
+              </.link>
+            </li>
+            <li>
+              <.link navigate={~p"/beer_status/new"}>
+                <.icon name="hero-plus-circle" class="size-5 shrink-0" />
+                <span class="text-lg">Report Vino</span>
+              </.link>
+            </li>
+            <li>
+              <.link navigate={~p"/about"}>
+                <.icon name="hero-information-circle" class="size-5 shrink-0" />
+                <span class="text-lg">About</span>
+              </.link>
+            </li>
+          </ul>
+        </div>
       </div>
-    </header>
+    </div>
 
-    <main class="px-4 py-20 sm:px-6 lg:px-8">
-      <div class="mx-auto max-w-2xl space-y-4">
+    <main>
+      <div class="mx-auto">
         {render_slot(@inner_block)}
       </div>
     </main>

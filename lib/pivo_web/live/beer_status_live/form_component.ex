@@ -85,7 +85,7 @@ defmodule PivoWeb.BeerStatusLive.FormComponent do
             />
             <label
               for="vino-available"
-              class="dark:bg-gray-800 inline-flex items-center justify-between w-full px-3 py-2 opacity-80 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked-text-zinc-700 peer-checked:border-green-400 border-2"
+              class="inline-flex items-center justify-between w-full px-3 py-2 opacity-80 bg-base-100 border border-base-content rounded-lg cursor-pointer peer-checked-text-base-content peer-checked:border-success border-2"
             >
               <div class="w-full text-sm">In stock</div>
               <img src={~p"/images/beer.png"} width="24" />
@@ -102,7 +102,7 @@ defmodule PivoWeb.BeerStatusLive.FormComponent do
             />
             <label
               for="vino-not-available"
-              class="dark:bg-gray-800 inline-flex items-center justify-between w-full px-3 py-2 opacity-80 bg-white border border-gray-200 rounded-lg cursor-pointer peer-checked-text-zinc-700 peer-checked:border-red-400 border-2"
+              class="inline-flex items-center justify-between w-full px-3 py-2 opacity-80 bg-base-100 border border-base-content rounded-lg cursor-pointer peer-checked-text-base-content peer-checked:border-error border-2"
             >
               <div class="w-full text-sm">Out of stock</div>
               <img src={~p"/images/no_beer.png"} width="24" />
@@ -112,7 +112,7 @@ defmodule PivoWeb.BeerStatusLive.FormComponent do
         <.input field={@form[:username]} type="text" placeholder="Add a username (optional)" />
         <.input field={@form[:comment]} type="textarea" placeholder="Add a comment (optional)" />
         <:actions>
-          <.button class="py-4 w-full" phx-disable-with="Reporting...">
+          <.button class="btn-primary w-full" phx-disable-with="Reporting...">
             Report Vino
           </.button>
         </:actions>

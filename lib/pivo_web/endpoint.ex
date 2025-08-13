@@ -23,7 +23,7 @@ defmodule PivoWeb.Endpoint do
   plug Plug.Static,
     at: "/",
     from: :pivo,
-    gzip: false,
+    gzip: not code_reloading?,
     only: PivoWeb.static_paths()
 
   # Code reloading can be explicitly enabled under the

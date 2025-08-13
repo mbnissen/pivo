@@ -60,7 +60,7 @@ config :pivo,
 
 # Configure tailwind (the version is required)
 config :tailwind,
-  version: "4.1.7",
+  version: "4.1.11",
   pivo: [
     args: ~w(
       --input=assets/css/app.css

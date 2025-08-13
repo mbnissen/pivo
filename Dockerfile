@@ -45,6 +45,8 @@ RUN mkdir config
 COPY config/config.exs config/${MIX_ENV}.exs config/
 RUN mix deps.compile
 
+RUN mix assets.setup
+
 # install npm dependencies
 COPY assets/package.json assets/package-lock.json ./assets/
 
@@ -59,8 +61,6 @@ COPY assets assets
 # compile assets
 RUN npm install --prefix ./assets
 RUN mix assets.deploy
-
-RUN mix assets.setup
 
 # Changes to config/runtime.exs don't require recompiling the code
 COPY config/runtime.exs config/

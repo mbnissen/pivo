@@ -40,7 +40,7 @@ defmodule Pivo.MixProject do
       {:phoenix_analytics, git: "https://github.com/mbnissen/PhoenixAnalytics", branch: "master"},
       {:mix_audit, "~> 2.1", only: [:dev, :test], runtime: false},
       {:styler, "~> 1.2", only: [:dev, :test], runtime: false},
-      {:sentry, "~> 10.2.0"},
+      {:sentry, "~> 11.0.3"},
       {:hackney, "~> 1.8"},
       {:timex, "~> 3.0"},
       {:phoenix, "~> 1.8.0"},

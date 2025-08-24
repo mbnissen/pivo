@@ -96,7 +96,13 @@ defmodule Pivo.Availibility do
   end
 
   def get_latest_beer_status_by_shop_id(shop_id) do
-    Repo.one(from(bs in BeerStatus, where: bs.beer_shop_id == ^shop_id, order_by: [desc: bs.inserted_at], limit: 1))
+    Repo.one(
+      from(bs in BeerStatus,
+        where: bs.beer_shop_id == ^shop_id,
+        order_by: [desc: bs.inserted_at],
+        limit: 1
+      )
+    )
   end
 
   @doc """

@@ -42,6 +42,7 @@ defmodule PivoWeb.MapLive do
           style: beer_shop.style,
           logo: beer_shop.logo,
           vino: Map.get(latest_status || %{}, :is_available, false),
+          canning_date: Map.get(latest_status || %{}, :canning_date),
           latest_update: latest_update,
           latest_update_comment: Map.get(latest_status || %{}, :comment, "")
         }

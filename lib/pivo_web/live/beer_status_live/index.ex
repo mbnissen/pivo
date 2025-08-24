@@ -66,32 +66,33 @@ defmodule PivoWeb.BeerStatusLive.Index do
             >
               <p>{beer_status.comment}</p>
             </div>
+            <div :if={beer_status.canning_date} class="text-xs">
+              Canned on: {beer_status.canning_date}
+            </div>
             <div class="text-xs pt-1 opacity-60">
               {Timex.from_now(beer_status.inserted_at)}
-              <span :if={
-                beer_status.username
-              }>- {beer_status.username}</span>
+              <span :if={beer_status.username}>- {beer_status.username}</span>
             </div>
           </div>
-            <div class="pt-1 flex flex-none w-12 justify-end">
-              <img
+          <div class="pt-1 flex flex-none w-12 justify-end">
+            <img
               :if={beer_status.is_available}
               src="/images/beer.png"
               class="w-8 h-8"
             />
-              <img
+            <img
               :if={!beer_status.is_available}
               src="/images/no_beer.png"
               class="w-8 h-8"
             />
-            </div>
+          </div>
         </li>
       </ul>
       <dialog :if={@live_action in [:new, :edit]} id="my_modal" class="modal modal-open">
         <div class="modal-box">
           <form method="dialog">
             <.link navigate={~p"/beer_status"}>
-            <button class="btn btn-circle btn-ghost absolute right-4 top-4">✕</button>
+              <button class="btn btn-circle btn-ghost absolute right-4 top-4">✕</button>
             </.link>
           </form>
           <.live_component

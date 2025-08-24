@@ -54,6 +54,8 @@ const MapHook = {
 
       el.appendChild(div);
 
+      const optionalCanningDate = location.canning_date ? `Canned on: ${location.canning_date}` : '';
+
       const html = `<div>
         <div class="inline-flex pb-1 gap-1 items-center">
           <img src="/images/${location.vino ? 'beer.png' : 'no_beer.png'}" class="w-4 h-4 object-cover" />
@@ -61,6 +63,9 @@ const MapHook = {
         </div>
         <div class="flex items-center gap-x-1 text-zinc-700">
           <p>${location.latest_update_comment ?? ""}</p>
+        </div>
+        <div class="flex text-zinc-500 text-xs pt-2">
+          ${optionalCanningDate}
         </div>
         <div class="flex text-zinc-500 text-xs pt-2">
           ${location.latest_update} 

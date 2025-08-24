@@ -109,6 +109,11 @@ defmodule PivoWeb.BeerStatusLive.FormComponent do
             </label>
           </li>
         </ul>
+        <.input
+          field={@form[:canning_date]}
+          type="date"
+          label="Canned on:"
+        />
         <.input field={@form[:username]} type="text" placeholder="Add a username (optional)" />
         <.input field={@form[:comment]} type="textarea" placeholder="Add a comment (optional)" />
         <:actions>

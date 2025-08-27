@@ -54,7 +54,11 @@ const MapHook = {
 
       el.appendChild(div);
 
-      const optionalCanningDate = location.canning_date ? `Canned on: ${location.canning_date}` : '';
+      const optionalCanningDate = location.canning_date ? `
+        <div class="flex text-zinc-500 text-xs pt-2">
+          Canned on: ${location.canning_date}
+        </div>
+      ` : '';
 
       const html = `<div>
         <div class="inline-flex pb-1 gap-1 items-center">
@@ -64,9 +68,7 @@ const MapHook = {
         <div class="flex items-center gap-x-1 text-zinc-700">
           <p>${location.latest_update_comment ?? ""}</p>
         </div>
-        <div class="flex text-zinc-500 text-xs pt-2">
-          ${optionalCanningDate}
-        </div>
+        ${optionalCanningDate}
         <div class="flex text-zinc-500 text-xs pt-2">
           ${location.latest_update} 
         </div>

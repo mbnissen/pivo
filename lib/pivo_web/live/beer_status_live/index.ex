@@ -66,7 +66,7 @@ defmodule PivoWeb.BeerStatusLive.Index do
             >
               <p>{beer_status.comment}</p>
             </div>
-            <div :if={beer_status.canning_date} class="text-xs">
+            <div :if={beer_status.canning_date} class="text-xs opacity-60">
               Canned on: {beer_status.canning_date}
             </div>
             <div class="text-xs pt-1 opacity-60">

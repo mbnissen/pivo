@@ -20,14 +20,21 @@ defmodule Pivo.Availibility do
         style: "Can"
       },
       %{
-        id: "e65fc1d3-035d-4c62-9915-cd3a5fcf7196",
-        name: "Rallys",
-        logo: "rallys_logo.png",
-        website: "https://www.rallys.dk",
-        lat: 55.64846734279557,
-        lng: 12.532315540117958,
+        id: "50e4ff87-9bd0-4b52-a897-bb0ca19a6943",
+        name: "Mikkeller & Friends Bottle Shop",
+        logo: "mikkeller_bottle_shop_logo.png",
+        lat: 55.683796786548264,
+        lng: 12.569227882377323,
         style: "Can"
       },
+      %{
+        id: "0b6336ed-8b27-4133-8f31-f13a633b1be7",
+        name: "Windsor Fisk & Skaldyr",
+        logo: "windsor_logo.jpg",
+        lat: 55.67855292094813,
+        lng: 12.505014797790816,
+        style: "Can"
+      }
       %{
         id: "afec5c50-637f-487d-a03f-e780ac1712c9",
         name: "Peders",
@@ -45,11 +52,12 @@ defmodule Pivo.Availibility do
         style: "Side pull"
       },
       %{
-        id: "50e4ff87-9bd0-4b52-a897-bb0ca19a6943",
-        name: "Mikkeller & Friends Bottle Shop",
-        logo: "mikkeller_bottle_shop_logo.png",
-        lat: 55.683796786548264,
-        lng: 12.569227882377323,
+        id: "e65fc1d3-035d-4c62-9915-cd3a5fcf7196",
+        name: "Rallys",
+        logo: "rallys_logo.png",
+        website: "https://www.rallys.dk",
+        lat: 55.64846734279557,
+        lng: 12.532315540117958,
         style: "Can"
       },
       %{
@@ -92,14 +100,6 @@ defmodule Pivo.Availibility do
         lng: 12.576797797804993,
         style: "Can"
       },
-      %{
-        id: "0b6336ed-8b27-4133-8f31-f13a633b1be7",
-        name: "Windsor Fisk & Skaldyr",
-        logo: "windsor_logo.jpg",
-        lat: 55.67855292094813,
-        lng: 12.505014797790816,
-        style: "Can"
-      }
     ]
   end
 

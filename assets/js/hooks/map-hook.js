@@ -10,7 +10,7 @@ const MapHook = {
 
     const map = new mapboxgl.Map({
       container: this.el.id,
-      zoom: 12,
+      zoom: 11,
       style: darkMode ? 'mapbox://styles/mapbox/dark-v11' : 'mapbox://styles/mapbox/standard',
       center: [
         12.545828760633713,

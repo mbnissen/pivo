@@ -91,6 +91,14 @@ defmodule Pivo.Availibility do
         lat: 55.66664572063112,
         lng: 12.576797797804993,
         style: "Can"
+      },
+      %{
+        id: "0b6336ed-8b27-4133-8f31-f13a633b1be7",
+        name: "Windsor Fisk & Skaldyr",
+        logo: "windsor_logo.jpg",
+        lat: 55.67855292094813,
+        lng: 12.505014797790816,
+        style: "Can"
       }
     ]
   end

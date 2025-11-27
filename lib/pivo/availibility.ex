@@ -34,7 +34,7 @@ defmodule Pivo.Availibility do
         lat: 55.67855292094813,
         lng: 12.505014797790816,
         style: "Can"
-      }
+      },
       %{
         id: "afec5c50-637f-487d-a03f-e780ac1712c9",
         name: "Peders",
@@ -99,7 +99,7 @@ defmodule Pivo.Availibility do
         lat: 55.66664572063112,
         lng: 12.576797797804993,
         style: "Can"
-      },
+      }
     ]
   end
 

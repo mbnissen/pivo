@@ -13,8 +13,8 @@ const MapHook = {
       zoom: 12,
       style: darkMode ? 'mapbox://styles/mapbox/dark-v11' : 'mapbox://styles/mapbox/standard',
       center: [
-        12.569157292471003,
-        55.67622541130143
+        12.545828760633713,
+        55.671543087513 
       ]
     });
 

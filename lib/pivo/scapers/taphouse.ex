@@ -1,5 +1,7 @@
 defmodule Pivo.Scrapers.Taphouse do
   @moduledoc false
+  require Logger
+
   @url "https://www.taphouse.dk"
 
   def get_vino_status do
@@ -40,18 +42,23 @@ defmodule Pivo.Scrapers.Taphouse do
         nil
 
       name ->
-        [size, price] = beer |> get_column_text(7) |> String.split(" ")
+        case beer |> get_column_text(7) |> String.split(" ") do
+          [size, price] ->
+            %{
+              number: get_column_text(beer, 1),
+              brewery: beer |> get_column_text(2) |> String.trim(),
+              name: name |> String.slice(0..-2//1) |> String.trim(),
+              style: get_column_text(beer, 4),
+              country: get_column_text(beer, 5),
+              abv: get_column_text(beer, 6),
+              price: price,
+              size: size
+            }
 
-        %{
-          number: get_column_text(beer, 1),
-          brewery: beer |> get_column_text(2) |> String.trim(),
-          name: name |> String.slice(0..-2//1) |> String.trim(),
-          style: get_column_text(beer, 4),
-          country: get_column_text(beer, 5),
-          abv: get_column_text(beer, 6),
-          price: price,
-          size: size
-        }
+          unknown ->
+            Logger.info("Ignoring unknown beer format: #{inspect(unknown)}")
+            nil
+        end
     end
   end
 

@@ -74,7 +74,7 @@ defmodule PivoWeb.BeerStatusLive.Index do
               <span :if={beer_status.username}>- {beer_status.username}</span>
             </div>
           </div>
-          <div class="pt-1 flex flex-none w-12 justify-end">
+          <div class="pt-1 flex flex-none w-12 flex-col items-end gap-1">
             <img
               :if={beer_status.is_available}
               src="/images/beer.png"
@@ -85,6 +85,12 @@ defmodule PivoWeb.BeerStatusLive.Index do
               src="/images/no_beer.png"
               class="w-8 h-8"
             />
+            <.link
+              navigate={~p"/checkin/#{beer_status.id}"}
+              class="link link-hover text-xs opacity-70"
+            >
+              Share
+            </.link>
           </div>
         </li>
       </ul>

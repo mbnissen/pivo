@@ -26,6 +26,7 @@ defmodule PivoWeb.Router do
     live "/about", AboutLive
     live "/beer_status", BeerStatusLive.Index, :index
     live "/beer_status/new", BeerStatusLive.Index, :new
+    live "/checkin/:id", CheckinLive
   end
 
   scope "/admin", PivoWeb do

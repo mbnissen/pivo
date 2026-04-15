@@ -103,6 +103,14 @@ defmodule Pivo.Availibility do
     ]
   end
 
+  def get_beer_status(id) do
+    Repo.get(BeerStatus, id)
+  end
+
+  def get_beer_shop(id) do
+    Enum.find(list_beer_shops(), &(&1.id == id))
+  end
+
   def get_latest_beer_status_by_shop_id(shop_id) do
     Repo.one(
       from(bs in BeerStatus,
@@ -164,12 +172,18 @@ defmodule Pivo.Availibility do
   end
 
   def update_beer_status(beer_shop_id, nil, nil) do
-    latest_status = get_latest_beer_status_by_shop_id(beer_shop_id)
+    case get_latest_beer_status_by_shop_id(beer_shop_id) do
+      nil ->
+        create_new_unavailable_status(beer_shop_id, nil)
 
-    if latest_status.is_available || (!latest_status.is_available && latest_status.comment) do
-      create_new_unavailable_status(beer_shop_id, nil)
-    else
-      :ok
+      %BeerStatus{is_available: true} ->
+        create_new_unavailable_status(beer_shop_id, nil)
+
+      %BeerStatus{is_available: false, comment: comment} when not is_nil(comment) ->
+        create_new_unavailable_status(beer_shop_id, nil)
+
+      _ ->
+        :ok
     end
   end
 

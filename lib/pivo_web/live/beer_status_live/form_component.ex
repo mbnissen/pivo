@@ -37,8 +37,8 @@ defmodule PivoWeb.BeerStatusLive.FormComponent do
 
         {:noreply,
          socket
-         |> put_flash(:info, "Success - thanks for your contribution!")
-         |> push_patch(to: socket.assigns.patch)}
+         |> put_flash(:info, "Thanks for your report — share it with friends!")
+         |> push_navigate(to: ~p"/checkin/#{beer_status.id}")}
 
       {:error, %Ecto.Changeset{} = changeset} ->
         {:noreply, assign(socket, form: to_form(changeset))}

@@ -108,7 +108,7 @@ defmodule PivoWeb.CheckinLive do
             data-share-native
             class="btn btn-primary w-full hidden"
           >
-            <.icon name="hero-share" class="size-5" /> Share with friends
+            <.icon name="hero-share" class="size-5" /> <span class="share-label">Share with friends</span>
           </button>
 
           <button

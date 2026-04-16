@@ -5,13 +5,28 @@ const ShareHook = {
     const title = this.el.dataset.title;
 
     const nativeBtn = this.el.querySelector("[data-share-native]");
-    if (nativeBtn && navigator.share) {
+    if (nativeBtn) {
       nativeBtn.classList.remove("hidden");
       nativeBtn.addEventListener("click", async () => {
+        if (navigator.share) {
+          try {
+            await navigator.share({ title, text, url });
+            return;
+          } catch (err) {
+            if (err.name === "AbortError") return;
+          }
+        }
+        // Fallback: copy link to clipboard
         try {
-          await navigator.share({ title, text, url });
+          await navigator.clipboard.writeText(url);
+          const label = nativeBtn.querySelector(".share-label");
+          if (label) {
+            const original = label.textContent;
+            label.textContent = "Link copied!";
+            setTimeout(() => (label.textContent = original), 1500);
+          }
         } catch (err) {
-          if (err.name !== "AbortError") console.error(err);
+          console.error(err);
         }
       });
     }

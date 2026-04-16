@@ -111,22 +111,6 @@ defmodule PivoWeb.CheckinLive do
             <.icon name="hero-share" class="size-5" /> Share with friends
           </button>
 
-          <a
-            href={"https://wa.me/?text=" <> URI.encode(@share_text <> " " <> @share_url)}
-            target="_blank"
-            rel="noopener"
-            class="btn btn-success w-full"
-          >
-            Share on WhatsApp
-          </a>
-
-          <a
-            href={"sgnl://send?text=" <> URI.encode(@share_text <> " " <> @share_url)}
-            class="btn btn-info w-full"
-          >
-            Share on Signal
-          </a>
-
           <button
             type="button"
             data-share-copy

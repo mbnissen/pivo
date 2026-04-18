@@ -52,46 +52,42 @@ defmodule PivoWeb.BeerStatusLive.Index do
           class="list-row"
           id={dom_id}
         >
-          <div>
-            <img
-              src={~p"/images/#{@beer_shops[beer_status.beer_shop_id].logo}"}
-              class="size-14 rounded-full"
-            />
-          </div>
-          <div class="list-col-grow">
-            <div class="text-lg">{@beer_shops[beer_status.beer_shop_id].name}</div>
-            <div
-              :if={beer_status.comment}
-              class="text-sm mb-2"
-            >
-              <p>{beer_status.comment}</p>
+          <.link navigate={~p"/checkin/#{beer_status.id}"} class="contents">
+            <div>
+              <img
+                src={~p"/images/#{@beer_shops[beer_status.beer_shop_id].logo}"}
+                class="size-14 rounded-full"
+              />
             </div>
-            <div :if={beer_status.canning_date} class="text-xs opacity-60">
-              Canned on: {beer_status.canning_date}
+            <div class="list-col-grow">
+              <div class="text-lg">{@beer_shops[beer_status.beer_shop_id].name}</div>
+              <div
+                :if={beer_status.comment}
+                class="text-sm mb-2"
+              >
+                <p>{beer_status.comment}</p>
+              </div>
+              <div :if={beer_status.canning_date} class="text-xs opacity-60">
+                Canned on: {beer_status.canning_date}
+              </div>
+              <div class="text-xs pt-1 opacity-60">
+                {Timex.from_now(beer_status.inserted_at)}
+                <span :if={beer_status.username}>- {beer_status.username}</span>
+              </div>
             </div>
-            <div class="text-xs pt-1 opacity-60">
-              {Timex.from_now(beer_status.inserted_at)}
-              <span :if={beer_status.username}>- {beer_status.username}</span>
+            <div class="pt-1 flex flex-none w-12 flex-col items-end gap-1">
+              <img
+                :if={beer_status.is_available}
+                src="/images/beer.png"
+                class="w-8 h-8"
+              />
+              <img
+                :if={!beer_status.is_available}
+                src="/images/no_beer.png"
+                class="w-8 h-8"
+              />
             </div>
-          </div>
-          <div class="pt-1 flex flex-none w-12 flex-col items-end gap-1">
-            <img
-              :if={beer_status.is_available}
-              src="/images/beer.png"
-              class="w-8 h-8"
-            />
-            <img
-              :if={!beer_status.is_available}
-              src="/images/no_beer.png"
-              class="w-8 h-8"
-            />
-            <.link
-              navigate={~p"/checkin/#{beer_status.id}"}
-              class="link link-hover text-xs opacity-70"
-            >
-              Share
-            </.link>
-          </div>
+          </.link>
         </li>
       </ul>
       <dialog :if={@live_action in [:new, :edit]} id="my_modal" class="modal modal-open">

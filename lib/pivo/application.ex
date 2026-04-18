@@ -56,6 +56,13 @@ defmodule Pivo.Application do
         url: "https://untappd.com/v/rallys-cafe/5595380?menu_id=206962"
       )
 
+    {:ok, _pid} =
+      Pivo.UntappdBeerScraper.start(
+        name: "Bootleggers Vesterbro",
+        beer_shop_id: "3ef8b58a-9170-40b4-acf9-f11172d878f7",
+        url: "https://untappd.com/v/bootleggers-vesterbro/13361130"
+      )
+
     # {:ok, _pid} =
     #  Pivo.UntappdBeerScraper.start(
     #    name: "Kihoskh",

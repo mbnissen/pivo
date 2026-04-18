@@ -99,6 +99,15 @@ defmodule Pivo.Availibility do
         lat: 55.66664572063112,
         lng: 12.576797797804993,
         style: "Can"
+      },
+      %{
+        id: "3ef8b58a-9170-40b4-acf9-f11172d878f7",
+        name: "Bootleggers Vesterbro",
+        logo: "bootleggers_vesterbro_logo.jpg",
+        website: "https://bootleggers.dk/vesterbro/",
+        lat: 55.668197,
+        lng: 12.5495059,
+        style: "Can"
       }
     ]
   end

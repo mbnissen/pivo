@@ -63,6 +63,13 @@ defmodule Pivo.Application do
         url: "https://untappd.com/v/bootleggers-vesterbro/13361130"
       )
 
+    {:ok, _pid} =
+      Pivo.UntappdBeerScraper.start(
+        name: "Fermentoren",
+        beer_shop_id: "d6b64ad8-40d5-4ecc-935b-fd8166f00b02",
+        url: "https://untappd.com/v/fermentoren-cph/127076"
+      )
+
     # {:ok, _pid} =
     #  Pivo.UntappdBeerScraper.start(
     #    name: "Kihoskh",

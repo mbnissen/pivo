@@ -108,6 +108,15 @@ defmodule Pivo.Availibility do
         lat: 55.668197,
         lng: 12.5495059,
         style: "Can"
+      },
+      %{
+        id: "d6b64ad8-40d5-4ecc-935b-fd8166f00b02",
+        name: "Fermentoren",
+        logo: "fermentoren_logo.png",
+        website: "https://fermentoren.com/",
+        lat: 55.667885,
+        lng: 12.556482,
+        style: "Side pull"
       }
     ]
   end
